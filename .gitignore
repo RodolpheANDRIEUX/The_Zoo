@@ -1,0 +1,25 @@
+# Fichiers de construction CMake
+cmake-build-*/
+
+# Fichiers objets générés
+*.o
+*.obj
+*.res
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Fichiers de sauvegarde créés par CLion
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+
+# Fichiers générés par le compilateur
+CMakeLists.txt.user
+compile_commands.json
+
+# Fichiers de configuration de l'environnement local
+.vscode/
