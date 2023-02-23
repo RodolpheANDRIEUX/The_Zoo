@@ -1,38 +1,40 @@
 #include <iostream>
-
+#include "headers/Zoo.h"
+#include "headers/AmazonZoo.h"
 using namespace std;
 
 int main() {
-    Zoo zoo("Notre zoo", 80000);
+    Zoo zoo("Our zoo");
+    AmazonZoo amazonZoo;
 
-    bool exit = false;
     string userInput;
     int Input;
-
-    while(!exit) {
-        cout << "\n**** MENU PRINCIPAL ****" << endl;
-        cout << "(1) Boutique" << endl;
-        cout << "(2) Zoo" << endl;
-        cout << "(3) Jour suivant" << endl;
-        cout << "(0) Quitter" << endl;
+    do {
+        cout << "\n**** LE ZOO ****" << endl;
+        cout << "(1) Buy" << endl;
+        cout << "(2) My Zoo" << endl;
+        cout << "(3) Pass time" << endl;
+        cout << "(0) Exit" << endl;
         cin >> userInput; Input = (int)userInput[0] - 48;
         switch (Input)
         {
             case 1:
-                zoo.boutique();
+                cout << "\n**** AMAZON ZOO ****" << endl;
+                amazonZoo.openBoutique();
                 break;
             case 2:
-                zoo.show();
+                cout << "\n**** MY ZOO ****" << endl;
+                //zoo.show();
                 break;
             case 3:
-                zoo.skip();
+                cout << "\n**** PASS TIME ****" << endl;
+                //zoo.timeMenu();
                 break;
             case 0:
-                exit = true;
                 break;
             default:
                 cout << "*unknown input*" << endl;
                 break;
         }
-    }
+    } while (Input != 0);
 }
