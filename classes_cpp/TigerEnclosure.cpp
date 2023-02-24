@@ -3,3 +3,11 @@
 //
 
 #include "../headers/TigerEnclosure.h"
+
+void TigerEnclosure::show() {
+
+}
+
+int TigerEnclosure::getPlace() {
+    return 2 - nbAnimal;
+}

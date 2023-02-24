@@ -43,9 +43,67 @@ void Zoo::give(int article, double quantity) {
         case 103:
             habitats.push_back(new EagleAviary);
             break;
+        case 201:
+        case 202:
+        case 203:
+        case 204:
+        case 205:
+        case 206:
+        case 207:
+            placeTiger(article);
+            break;
+        case 208:
+        case 209:
+            placeChicken(article);
+            break;
+        case 210:
+        case 211:
+        case 212:
+        case 213:
+        case 214:
+            placeEagle(article);
+            break;
         default:
             cout << "error giving due: article doesnt exist!" << endl;
             break;
     }
 }
 
+bool Zoo::checkPlaceForTiger() {
+    for ( auto habitat : habitats){
+        if (dynamic_cast<TigerEnclosure*>(habitat) && habitat->getPlace() > 0){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Zoo::checkPlaceForChiken() {
+    for ( auto habitat : habitats){
+        if (dynamic_cast<ChickenCoop*>(habitat) && habitat->getPlace() > 0){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Zoo::checkPlaceForEagle() {
+    for ( auto habitat : habitats){
+        if (dynamic_cast<EagleAviary*>(habitat) && habitat->getPlace() > 0){
+            return true;
+        }
+    }
+    return false;
+}
+
+void Zoo::placeTiger(int article) {
+    // TODO selectionner un habitat et y creer un tigre
+}
+
+void Zoo::placeChicken(int article) {
+    // TODO selectionner un habitat et y creer un Poulet
+}
+
+void Zoo::placeEagle(int article) {
+    // TODO selectionner un habitat et y creer un Aigle
+}

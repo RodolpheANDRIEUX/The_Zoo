@@ -4,7 +4,7 @@
 #define UNTITLED1_TIGER_H
 
 
-class Tiger : Animal {
+class Tiger : public Animal {
 
 };
 

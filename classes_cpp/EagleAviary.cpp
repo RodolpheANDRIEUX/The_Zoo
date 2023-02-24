@@ -3,3 +3,11 @@
 //
 
 #include "../headers/EagleAviary.h"
+
+void EagleAviary::show() {
+
+}
+
+int EagleAviary::getPlace() {
+    return 4 - nbAnimal;
+}

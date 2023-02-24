@@ -9,7 +9,7 @@ using namespace std;
  *
  * Lui creer une classe
  * L'ajouter lui et son habitat au catalogue Amazon (+ food si necessaire)
- * L'ajouter dans les methodes menu (food, habitat, animals)
+ * L'ajouter dans les methodes menu (food, habitat, animals, age, sexe)
  * L'ajouter dans le zoo::give() !
  *
  *

@@ -18,25 +18,37 @@ public:
         catalog[102] = {"Chicken Coop", 300};
         catalog[103] = {"Eagle Aviary", 2000};
         // ANIMALS
-        catalog[201] = {"6 month old Tiger", 3000};
-        catalog[202] = {"4 years old Tiger", 120000};
-        catalog[203] = {"14 years old Tiger", 60000};
-        catalog[204] = {"6 month old rooster", 100};
-        catalog[205] = {"6 month old  Chicken", 20};
-        catalog[206] = {"6 month old Eagle", 1000};
-        catalog[207] = {"4 years old Eagle", 4000};
-        catalog[208] = {"14 years old Eagle", 2000};
+        catalog[201] = {"6 month old Male Tiger", 3000};
+        catalog[202] = {"6 month old Female Tiger", 3000};
+        catalog[203] = {"4 years old Male Tiger", 120000};
+        catalog[204] = {"4 years old Female Tiger", 120000};
+        catalog[205] = {"14 years old Male Tiger", 60000};
+        catalog[206] = {"14 years old Female Tiger", 60000};
+        catalog[207] = {"6 month old rooster", 100};
+        catalog[208] = {"6 month old  Chicken", 20};
+        catalog[209] = {"6 month old Male Eagle", 1000};
+        catalog[210] = {"6 month old Female Eagle", 1000};
+        catalog[211] = {"4 years old Male Eagle", 4000};
+        catalog[212] = {"4 years old Female Eagle", 4000};
+        catalog[213] = {"14 years old Male Eagle", 2000};
+        catalog[214] = {"14 years old Female Eagle", 2000};
     }
 
-    void openBoutique(Zoo* client);
+    void openBoutique(Zoo *client);
 
-    void foodMenu(Zoo* client);
+    void foodMenu(Zoo *client);
 
-    void habitatMenu(Zoo* client);
+    void habitatMenu(Zoo *client);
 
-    void animalMenu(Zoo* client);
+    void animalMenu(Zoo *client);
 
-    void sell(Zoo* client, int article);
+    void ageMenu(Zoo *client, int animalID);
+
+    void sell(Zoo *client, int article);
+
+    void sexeMenu(Zoo *client, int articleID);
+
+    void placeAnimal(Zoo *client, int article);
 };
 
 

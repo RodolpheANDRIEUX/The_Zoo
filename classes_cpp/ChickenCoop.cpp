@@ -3,3 +3,11 @@
 //
 
 #include "../headers/ChickenCoop.h"
+
+void ChickenCoop::show() {
+
+}
+
+int ChickenCoop::getPlace() {
+    return 10 - nbAnimal;
+}

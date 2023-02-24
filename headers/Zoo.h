@@ -28,6 +28,18 @@ public:
     double getGrains() const;
 
     void give(int article, double quantity);
+
+    bool checkPlaceForTiger();
+
+    bool checkPlaceForChiken();
+
+    bool checkPlaceForEagle();
+
+    void placeTiger(int article);
+
+    void placeChicken(int article);
+
+    void placeEagle(int article);
 };
 
 

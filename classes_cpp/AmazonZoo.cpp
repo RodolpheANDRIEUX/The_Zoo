@@ -72,7 +72,7 @@ void AmazonZoo::habitatMenu(Zoo* client){
         cout << "\n**** HABITATS ****                                  Balance: " << client->getMoney() << "euro" << endl;
         cout << "(1) For Tiger (can contain up to 2 Tigers)" << endl;
         cout << "(2) For Chicken (can contain up to 10 chickens)" << endl;
-        cout << "(3) For Chicken (can contain up to 4 eagles)" << endl;
+        cout << "(3) For Eagles (can contain up to 4 eagles)" << endl;
         cout << "(0) back to menu" << endl;
         cin >> userInput; Input = (int)userInput[0] - 48;
         switch (Input)
@@ -95,7 +95,92 @@ void AmazonZoo::habitatMenu(Zoo* client){
     } while (Input != 0);
 }
 
-void AmazonZoo::animalMenu(Zoo* client){}
+void AmazonZoo::sexeMenu(Zoo *client, int articleID) {
+    string userInput;
+    int Input;
+    do {
+        cout << "\n**** Male or Female ****                                  Balance: " << client->getMoney() << "euro" << endl;
+        cout << "(1) " << ((articleID == 207) ? "6 month old Rooster" : "Male") << endl;
+        cout << "(2) " << ((articleID == 207) ? "6 month old Hen" : "Female") << endl;
+        cout << "(0) back to menu" << endl;
+        cin >> userInput; Input = (int)userInput[0] - 48;
+        switch (Input)
+        {
+            case 1:
+                placeAnimal(client, articleID);
+                return;
+            case 2:
+                placeAnimal(client, articleID + 1 );
+                return;
+            case 0:
+                break;
+            default:
+                cout << "*unknown input*" << endl;
+                break;
+        }
+    } while (Input != 0);
+}
+
+void AmazonZoo::ageMenu(Zoo *client, int animalID) {
+    string userInput;
+    int Input;
+
+    do {
+        cout << "\n**** " << ((animalID == 201) ? "TIGERS" : "EAGLES") << " ****                                  Balance: " << client->getMoney() << "euro" << endl;
+        cout << "(1) 6 month old" << endl;
+        cout << "(2) 4 years old" << endl;
+        cout << "(3) 14 years old" << endl;
+        cout << "(0) back to menu" << endl;
+        cin >> userInput; Input = (int)userInput[0] - 48;
+        switch (Input)
+        {
+            case 1:
+                sexeMenu(client, animalID);
+                return;
+            case 2:
+                sexeMenu(client, animalID + 2);
+                return;
+            case 3:
+                sexeMenu(client, animalID + 4);
+                return;
+            case 0:
+                break;
+            default:
+                cout << "*unknown input*" << endl;
+                break;
+        }
+    } while (Input != 0);
+}
+
+void AmazonZoo::animalMenu(Zoo* client){
+    string userInput;
+    int Input;
+    do {
+        cout << "\n**** ANIMALS ****                                  Balance: " << client->getMoney() << "euro" << endl;
+        cout << "(1) Tigers" << endl;
+        cout << "(2) Chicken" << endl;
+        cout << "(3) Eagles" << endl;
+        cout << "(0) back to menu" << endl;
+        cin >> userInput; Input = (int)userInput[0] - 48;
+        switch (Input)
+        {
+            case 1:
+                ageMenu(client, 201);
+                break;
+            case 2:
+                sexeMenu(client, 207);
+                break;
+            case 3:
+                ageMenu(client, 209);
+                break;
+            case 0:
+                break;
+            default:
+                cout << "*unknown input*" << endl;
+                break;
+        }
+    } while (Input != 0);
+}
 
 void AmazonZoo::sell(Zoo *client, int article) {
     double quantity;
@@ -126,4 +211,29 @@ void AmazonZoo::sell(Zoo *client, int article) {
 
     }while (Input != 0);
 }
+
+void AmazonZoo::placeAnimal(Zoo *client, int article) {
+    if (article >= 201 && article <= 206){ // If its a Tiger
+        if (!client->checkPlaceForTiger()){
+            cout << "" << endl;
+            return;
+        }
+        sell(client, article);
+    } else if (article >= 207 && article <= 208){ // If its a chicken
+        if (!client->checkPlaceForChiken()){
+            cout << "" << endl;
+            return;
+        }
+        sell(client, article);
+    }else if (article >= 209 && article <= 214){ // If its an Eagle
+        if (!client->checkPlaceForEagle()){
+            cout << "" << endl;
+            return;
+        }
+        sell(client, article);
+    }
+}
+
+
+
 

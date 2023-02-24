@@ -10,7 +10,10 @@ using namespace std;
 class ChickenCoop : public Habitat{
     vector<Chicken*> chickens;
     int Eggs;
+public:
+    void show() override;
 
+    int getPlace() override;
 };
 
 

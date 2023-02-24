@@ -1,12 +1,9 @@
-//
-// Created by rodol on 23/02/2023.
-//
+#include "Animal.h"
 
 #ifndef UNTITLED1_CHICKEN_H
 #define UNTITLED1_CHICKEN_H
 
-
-class Chicken {
+class Chicken : public Animal{
 
 };
 
