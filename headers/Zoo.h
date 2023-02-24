@@ -21,15 +21,13 @@ public:
 
     bool pay(double price);
 
-    [[nodiscard]] double getMoney() const;
+    double getMoney() const;
 
-    [[nodiscard]] double getSteaks() const;
+    double getSteaks() const;
 
-    [[nodiscard]] double getGrains() const;
+    double getGrains() const;
 
-    void giveGrains(double quantity);
-
-    void giveSteaks(double quantity);
+    void give(int article, double quantity);
 };
 
 
