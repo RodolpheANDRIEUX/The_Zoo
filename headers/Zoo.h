@@ -12,13 +12,24 @@ class Zoo {
     string name;
     double money = 80000;
     vector<Habitat*> habitats;
-    int age = 0;
-    int steaks = 0;
-    int grains = 0;
+    int Days = 0;
+    double steaks = 0;
+    double grains = 0;
 
 public:
     explicit Zoo(string name) : name(std::move(name)){}
 
+    bool pay(double price);
+
+    [[nodiscard]] double getMoney() const;
+
+    [[nodiscard]] double getSteaks() const;
+
+    [[nodiscard]] double getGrains() const;
+
+    void giveGrains(double quantity);
+
+    void giveSteaks(double quantity);
 };
 
 

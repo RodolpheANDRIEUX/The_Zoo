@@ -1,19 +1,29 @@
-
+#include "Zoo.h"
+#include <map>
 
 #ifndef UNTITLED1_AMAZONZOO_H
 #define UNTITLED1_AMAZONZOO_H
 
 
 class AmazonZoo {
+    std::map<int, pair<string, double>> catalog;
 
 public:
-    static void openBoutique();
+    AmazonZoo(){
+        catalog[1] = {"Meat", 5.00};
+        catalog[2] = {"Grains", 2.50};
+        catalog[3] = {"", 0};
+    }
 
-    static void foodMenu();
+    static void openBoutique(Zoo* client);
 
-    void habitatMenu();
+    void foodMenu(Zoo* client);
 
-    void animalMenu();
+    void habitatMenu(Zoo* client);
+
+    void animalMenu(Zoo* client);
+
+    void sell(Zoo* client, int article);
 };
 
 

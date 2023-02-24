@@ -19,8 +19,7 @@ int main() {
         switch (Input)
         {
             case 1:
-                cout << "\n**** AMAZON ZOO ****" << endl;
-                amazonZoo.openBoutique();
+                amazonZoo.openBoutique(&zoo);
                 break;
             case 2:
                 cout << "\n**** MY ZOO ****" << endl;
