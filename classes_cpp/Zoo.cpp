@@ -1,5 +1,6 @@
 #include "../headers/Zoo.h"
 #include "../headers/TigerEnclosure.h"
+#include "../headers/Tiger.h"
 #include "../headers/ChickenCoop.h"
 #include "../headers/EagleAviary.h"
 
@@ -26,46 +27,81 @@ double Zoo::getSteaks() const {
 
 // create all new elements (Food, Habitats, Animals) when bought in the store
 void Zoo::give(int article, double quantity) {
+    if (article < 100){ // food
+        switch (article) {
+            case 1:
+                steaks++;
+                break;
+            case 2:
+                grains++;
+                break;
+            default:
+                cout << "error giving due: article doesnt exist!" << endl;
+        }
+        return;
+    }
 
-    switch (article){
-        case 1:
-            steaks += quantity;
-            break;
-        case 2:
-            grains += quantity;
-            break;
-        case 101:
-            habitats.push_back(new TigerEnclosure);
-            break;
-        case 102:
-            habitats.push_back(new ChickenCoop);
-            break;
-        case 103:
-            habitats.push_back(new EagleAviary);
-            break;
-        case 201:
-        case 202:
-        case 203:
-        case 204:
-        case 205:
-        case 206:
-        case 207:
-            placeTiger(article);
-            break;
-        case 208:
-        case 209:
-            placeChicken(article);
-            break;
-        case 210:
-        case 211:
-        case 212:
-        case 213:
-        case 214:
-            placeEagle(article);
-            break;
-        default:
-            cout << "error giving due: article doesnt exist!" << endl;
-            break;
+    string animalName;
+    for (int i = 0; i < (int)quantity; i++) {
+        if (article >= 200) {
+            cout << "give it a name: ";
+            cin >> animalName;
+        }
+        switch (article) {
+            case 101:
+                habitats.push_back(new TigerEnclosure);
+                break;
+            case 102:
+                habitats.push_back(new ChickenCoop);
+                break;
+            case 103:
+                habitats.push_back(new EagleAviary);
+                break;
+            case 201:
+                placeAnimal(new Tiger(animalName, 180, false));
+                break;
+            case 202:
+                placeAnimal(new Tiger(animalName, 180, true));
+                break;
+            case 203:
+                placeAnimal(new Tiger(animalName, 360*4, false));
+                break;
+            case 204:
+                placeAnimal(new Tiger(animalName, 360*4, true));
+                break;
+            case 205:
+                placeAnimal(new Tiger(animalName, 360*14, false));
+                break;
+            case 206:
+                placeAnimal(new Tiger(animalName, 360*14, true));
+                break;
+            case 207:
+                placeAnimal(new Chicken(animalName, 6*30, false));
+                break;
+            case 208:
+                placeAnimal(new Chicken(animalName, 6*30, true));
+                break;
+            case 209:
+                placeAnimal(new Eagle(animalName, 6*30, false));
+                break;
+            case 210:
+                placeAnimal(new Eagle(animalName, 6*30, true));
+                break;
+            case 211:
+                placeAnimal(new Eagle(animalName, 360*4, false));
+                break;
+            case 212:
+                placeAnimal(new Eagle(animalName, 360*4, true));
+                break;
+            case 213:
+                placeAnimal(new Eagle(animalName, 360*14, false));
+                break;
+            case 214:
+                placeAnimal(new Eagle(animalName, 360*14, true));
+                break;
+            default:
+                cout << "error giving due: article doesnt exist!" << endl;
+        }
     }
 }
 
@@ -96,14 +132,56 @@ bool Zoo::checkPlaceForEagle() {
     return false;
 }
 
-void Zoo::placeTiger(int article) {
-    // TODO selectionner un habitat et y creer un tigre
-}
+void Zoo::placeAnimal(Animal *animal) {
+    string userInput;
+    int Input;
+    do {
+        vector<int> availableIndex;
+        cout << "**** Chose an habitat for " << animal->getName() << " ****" << endl;
 
-void Zoo::placeChicken(int article) {
-    // TODO selectionner un habitat et y creer un Poulet
-}
+        for (int i = 0; i < habitats.size(); i++){
+            int available = habitats[i]->getPlace();
 
-void Zoo::placeEagle(int article) {
-    // TODO selectionner un habitat et y creer un Aigle
+            if (available > 0){
+                availableIndex.push_back(i);
+                cout << "(" <<  i+1 << ") ";
+                if (dynamic_cast<TigerEnclosure*>(habitats[i])) {
+                    cout << "Tiger Enclosure with ";
+                } else  if (dynamic_cast<ChickenCoop*>(habitats[i])) {
+                    cout << "Chicken Coop with ";
+                } else  if (dynamic_cast<EagleAviary*>(habitats[i])) {
+                    cout << "Eagle Aviary with ";
+                } else {
+                    cout << "Unknown Enclosure" << endl;
+                }
+                cout << available << " available places" << endl;
+            }
+        }
+
+        cin >> userInput; Input = (int)userInput[0] - 49;
+        for (auto i : availableIndex){
+            if (Input == i){
+
+                pair<int, int> err = habitats[i]->receive(animal);
+                switch (err.first){
+                    case 1:
+                        steaks += err.second;
+                        return;
+                    case 2:
+                        cout << "You are fined for endangering public safety: " << err.second << "euros" << endl;
+                        if (!pay(err.second)){
+                            cout << "You don't have enough money to pay" << endl;
+                            cout << "GAME OVER" << endl;
+                            exit;
+                        }
+                        return;
+                    default:
+                        break;
+                }
+
+            } else{
+                cout << "Not available habitat" << endl;
+            }
+        }
+    } while (Input != 0);
 }

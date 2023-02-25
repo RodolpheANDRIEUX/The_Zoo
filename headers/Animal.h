@@ -8,15 +8,21 @@ using namespace std;
 
 class Animal {
     string name;
-    int age; // day
-    bool hungry;
-    bool sick;
-    bool female;
+    int age; // days
+    bool hungry = false;
+    bool sick = false;
     int ShyCoolDown = 30;
 
+protected:
+    bool female;
 public:
-    Animal(string name, int age) : name(std::move(name)), age(age){}
+    Animal(string name, int age, bool female) : name(std::move(name)), age(age), female(female){}
 
+    void kill(int deathCode);
+
+    string getName();
+
+    virtual void sayHi() = 0;
 };
 
 

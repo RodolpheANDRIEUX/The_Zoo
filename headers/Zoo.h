@@ -3,6 +3,7 @@ using namespace std;
 #include <utility>
 #include <vector>
 #include "Habitat.h"
+#include "Animal.h"
 
 #ifndef UNTITLED1_ZOO_H
 #define UNTITLED1_ZOO_H
@@ -35,11 +36,7 @@ public:
 
     bool checkPlaceForEagle();
 
-    void placeTiger(int article);
-
-    void placeChicken(int article);
-
-    void placeEagle(int article);
+    void placeAnimal(Animal *animal);
 };
 
 

@@ -215,19 +215,19 @@ void AmazonZoo::sell(Zoo *client, int article) {
 void AmazonZoo::placeAnimal(Zoo *client, int article) {
     if (article >= 201 && article <= 206){ // If its a Tiger
         if (!client->checkPlaceForTiger()){
-            cout << "" << endl;
+            cout << "There is no place yet for a Tiger in Your Zoo" << endl;
             return;
         }
         sell(client, article);
     } else if (article >= 207 && article <= 208){ // If its a chicken
         if (!client->checkPlaceForChiken()){
-            cout << "" << endl;
+            cout << "There is no place yet for a Chicken in Your Zoo" << endl;
             return;
         }
         sell(client, article);
     }else if (article >= 209 && article <= 214){ // If its an Eagle
         if (!client->checkPlaceForEagle()){
-            cout << "" << endl;
+            cout << "There is no place yet for an Eagle in Your Zoo" << endl;
             return;
         }
         sell(client, article);

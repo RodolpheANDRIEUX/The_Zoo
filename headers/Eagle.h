@@ -6,6 +6,10 @@
 
 class Eagle : public Animal {
 
+public:
+    Eagle(string name, int age, bool female) : Animal(std::move(name), age, female){}
+
+    void sayHi() override;
 };
 
 
