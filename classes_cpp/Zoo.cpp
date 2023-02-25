@@ -45,7 +45,8 @@ void Zoo::give(int article, double quantity) {
     for (int i = 0; i < (int)quantity; i++) {
         if (article >= 200) {
             cout << "give it a name: ";
-            cin >> animalName;
+            cin.ignore();
+            getline(cin, animalName);
         }
         switch (article) {
             case 101:
@@ -133,8 +134,6 @@ bool Zoo::checkPlaceForEagle() {
 }
 
 void Zoo::placeAnimal(Animal *animal) {
-    string userInput;
-    int Input;
     do {
         vector<int> availableIndex;
         cout << "**** Chose an habitat for " << animal->getName() << " ****" << endl;
@@ -161,7 +160,16 @@ void Zoo::placeAnimal(Animal *animal) {
             }
         }
 
-        cin >> userInput; Input = (int)userInput[0] - 49;
+        int Input;
+        do{
+            string input;
+            cin >> input;
+            try {
+                Input = stoi(input);
+            } catch (...) {
+                Input = 0;
+            }
+        } while (Input < 1);
         pair<int, int> err = habitats[Input]->receive(animal);
         switch (err.first){
             case 1:

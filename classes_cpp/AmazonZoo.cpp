@@ -195,14 +195,22 @@ void AmazonZoo::animalMenu(Zoo* client){
 }
 
 void AmazonZoo::sell(Zoo *client, int article) {
-    double quantity;
+    int quantity = 0;
     double price;
     string userInput;
     int Input;
 
     cout << "\n** Buying "<< catalog[article].first << " (" << catalog[article].second << "euro" << ((article <= 100) ? "/kg) **" : ") **") << endl;
-    cout << "Quantity" << ((article <= 100) ? " (kg): " : ": ");
-    cin >> quantity;
+    do {
+        cout << "Quantity" << ((article <= 100) ? " (kg): " : ": ");
+        string quantityInput;
+        cin >> quantityInput;
+        try {
+            quantity = stoi(quantityInput);
+        } catch (...) {
+            quantity = 0;
+        }
+    } while (quantity < 1);
     price = quantity * catalog[article].second;
     cout << "It will be " << price << "euro. Continue?" << endl;
 
