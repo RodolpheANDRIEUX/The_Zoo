@@ -12,19 +12,5 @@ int ChickenCoop::getPlace() {
 }
 
 pair<int, int> ChickenCoop::receive(Animal *newAnimal) {
-
-    if (dynamic_cast<Tiger*>(newAnimal)){
-        Animals.push_back(newAnimal);
-        return {0, 0};
-    }
-    if (dynamic_cast<Eagle*>(newAnimal)){
-        Animals.push_back(newAnimal);
-        cout << "OMGGG" << endl;
-        return {0, 0};
-    }
-    if (dynamic_cast<Chicken*>(newAnimal)){
-        Animals.push_back(newAnimal);
-        cout << "OMGGG" << endl;
-        return {0, 0};
-    }
+    return {0,0};
 }
