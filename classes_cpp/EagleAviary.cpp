@@ -13,5 +13,7 @@ int EagleAviary::getPlace() {
 }
 
 pair<int, int> EagleAviary::receive(Animal *newAnimal) {
+    Animals.push_back(newAnimal);
+    nbAnimal++;
     return {0,0};
 }
