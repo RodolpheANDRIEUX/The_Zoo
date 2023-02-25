@@ -30,10 +30,10 @@ void Zoo::give(int article, double quantity) {
     if (article < 100){ // food
         switch (article) {
             case 1:
-                steaks++;
+                steaks += quantity;
                 break;
             case 2:
-                grains++;
+                grains += quantity;
                 break;
             default:
                 cout << "error giving due: article doesnt exist!" << endl;
