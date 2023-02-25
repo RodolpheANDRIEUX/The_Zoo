@@ -165,11 +165,11 @@ void Zoo::placeAnimal(Animal *animal) {
             string input;
             cin >> input;
             try {
-                Input = stoi(input);
+                Input = stoi(input) - 1;
             } catch (...) {
-                Input = 0;
+                Input = -1;
             }
-        } while (Input < 1);
+        } while (Input < 0);
         pair<int, int> err = habitats[Input]->receive(animal);
         switch (err.first){
             case 1:
