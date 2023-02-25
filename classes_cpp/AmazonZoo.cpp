@@ -73,6 +73,7 @@ void AmazonZoo::habitatMenu(Zoo* client){
         cout << "(1) For Tiger (can contain up to 2 Tigers)" << endl;
         cout << "(2) For Chicken (can contain up to 10 chickens)" << endl;
         cout << "(3) For Eagles (can contain up to 4 eagles)" << endl;
+        cout << "(4) Starter Pack (2 for Tigers, 2 for Chickens and 2 for Eagles)" << endl;
         cout << "(0) back to menu" << endl;
         cin >> userInput; Input = (int)userInput[0] - 48;
         switch (Input)
@@ -86,6 +87,17 @@ void AmazonZoo::habitatMenu(Zoo* client){
             case 3:
                 sell(client, 103); // Eagle Aviary
                 break;
+            case 4:
+                if (client->pay(8600)) {
+                    cout << "*payment accepted*" << endl;
+                    cout << "Your Balance is now " << client->getMoney() << "euro" << endl;
+                    client->give(101, 2);
+                    client->give(102, 2);
+                    client->give(103, 2);
+                    return;
+                }
+                cout << "payment declined" << endl;
+                return;
             case 0:
                 break;
             default:

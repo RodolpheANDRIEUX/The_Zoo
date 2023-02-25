@@ -139,49 +139,53 @@ void Zoo::placeAnimal(Animal *animal) {
         vector<int> availableIndex;
         cout << "**** Chose an habitat for " << animal->getName() << " ****" << endl;
 
-        for (int i = 0; i < habitats.size(); i++){
+        for (int i = 0; i < habitats.size(); i++){ // lists available habitat for the animal
             int available = habitats[i]->getPlace();
-
             if (available > 0){
-                availableIndex.push_back(i);
-                cout << "(" <<  i+1 << ") ";
-                if (dynamic_cast<TigerEnclosure*>(habitats[i])) {
+                if (dynamic_cast<TigerEnclosure*>(habitats[i]) && dynamic_cast<Tiger*>(animal) || dynamic_cast<TigerEnclosure*>(habitats[i]) && dynamic_cast<Chicken*>(animal)) {
+                    availableIndex.push_back(i);
+                    cout << "(" <<  i+1 << ") ";
                     cout << "Tiger Enclosure with ";
-                } else  if (dynamic_cast<ChickenCoop*>(habitats[i])) {
+                    cout << available << " available places" << endl;
+                } else  if (dynamic_cast<ChickenCoop*>(habitats[i]) && dynamic_cast<Chicken*>(animal)) {
+                    availableIndex.push_back(i);
+                    cout << "(" <<  i+1 << ") ";
                     cout << "Chicken Coop with ";
-                } else  if (dynamic_cast<EagleAviary*>(habitats[i])) {
+                    cout << available << " available places" << endl;
+                } else  if (dynamic_cast<EagleAviary*>(habitats[i]) && dynamic_cast<Eagle*>(animal)) {
+                    availableIndex.push_back(i);
+                    cout << "(" <<  i+1 << ") ";
                     cout << "Eagle Aviary with ";
-                } else {
-                    cout << "Unknown Enclosure" << endl;
+                    cout << available << " available places" << endl;
                 }
-                cout << available << " available places" << endl;
             }
         }
 
         cin >> userInput; Input = (int)userInput[0] - 49;
-        for (auto i : availableIndex){
-            if (Input == i){
-
-                pair<int, int> err = habitats[i]->receive(animal);
-                switch (err.first){
-                    case 1:
-                        steaks += err.second;
-                        return;
-                    case 2:
-                        cout << "You are fined for endangering public safety: " << err.second << "euros" << endl;
-                        if (!pay(err.second)){
-                            cout << "You don't have enough money to pay" << endl;
-                            cout << "GAME OVER" << endl;
-                            exit;
-                        }
-                        return;
-                    default:
-                        break;
+        pair<int, int> err = habitats[Input]->receive(animal);
+        switch (err.first){
+            case 1:
+                steaks += err.second;
+                return;
+            case 2:
+                cout << "You are fined for endangering public safety: " << err.second << "euros" << endl;
+                if (!pay(err.second)){
+                    cout << "You don't have enough money to pay" << endl;
+                    gameOver();
                 }
-
-            } else{
-                cout << "Not available habitat" << endl;
-            }
+                return;
+            case 0:
+                cout << "You have successfully welcomed a new animal in the Zoo!" << endl;
+                return;
+            default:
+                cout << "*unknown error*" << endl;
+                break;
         }
-    } while (Input != 0);
+    } while (true);
+}
+
+void Zoo::gameOver() const {
+    cout << "\n\nGAME OVER" << endl;
+    cout << "Your survived " << Days << " days!" << endl;
+    exit(EXIT_SUCCESS);
 }

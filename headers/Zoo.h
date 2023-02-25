@@ -37,6 +37,8 @@ public:
     bool checkPlaceForEagle();
 
     void placeAnimal(Animal *animal);
+
+    void gameOver() const;
 };
 
 
