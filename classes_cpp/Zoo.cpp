@@ -215,16 +215,13 @@ void Zoo::show() {
             int nbA = habitats[i]->getNbAnimals();
             bool ping = habitats[i]->checkHabitat();
             if (dynamic_cast<TigerEnclosure*>(habitats[i])) {
-                cout << "(" <<  i+1 << ") ";
-                cout << "Tiger Enclosure with";
+                cout << "(" <<  i+1 << ") Tiger Enclosure with";
                 cout << ((nbA == 0) ? "out any" : " " + to_string(nbA)) << " Tiger" << ((nbA > 1) ? "s" : "") << ((ping)? "     /!\\" : "") << endl;
             } else  if (dynamic_cast<ChickenCoop*>(habitats[i])) {
-                cout << "(" <<  i+1 << ") ";
-                cout << "Chicken Coop with";
+                cout << "(" <<  i+1 << ") Chicken Coop with";
                 cout << ((nbA == 0) ? "out any" : " " + to_string(nbA)) << " Chicken" << ((nbA > 1) ? "s" : "") << ((ping)? "     /!\\" : "") << endl;
             } else  if (dynamic_cast<EagleAviary*>(habitats[i])) {
-                cout << "(" <<  i+1 << ") ";
-                cout << "Eagle Aviary with";
+                cout << "(" <<  i+1 << ") Eagle Aviary with";
                 cout << ((nbA == 0) ? "out any" : " " + to_string(nbA)) << " Eagle" << ((nbA > 1) ? "s" : "") << ((ping)? "     /!\\" : "") << endl;
             }
         }
