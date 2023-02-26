@@ -28,6 +28,11 @@ public:
     virtual void show() = 0;
 
     bool everythingok() const;
+
+    virtual void getOld() = 0;
+
+    void updateAge();
+    int getAge();
 };
 
 

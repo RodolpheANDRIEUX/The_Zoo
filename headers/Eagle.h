@@ -11,6 +11,8 @@ public:
     Eagle(string name, int age, bool female) : Animal(std::move(name), age, female){}
 
     void show() override;
+
+    void getOld();
 };
 
 

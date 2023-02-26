@@ -51,6 +51,8 @@ public:
 
     // Event
     void nextDay();
+
+    void EventOld();
 };
 
 

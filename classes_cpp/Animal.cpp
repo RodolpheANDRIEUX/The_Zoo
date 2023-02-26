@@ -26,6 +26,14 @@ void Animal::kill(int deathCode) {
     delete this;
 }
 
+void Animal::updateAge() {
+    this->age++;
+}
+
+int Animal::getAge() {
+    return this->age;
+}
+
 bool Animal::everythingok() const {
     if (hungry || sick){
         return false;

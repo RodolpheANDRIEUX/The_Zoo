@@ -11,6 +11,9 @@ protected:
     int nbAnimal = 0;
     vector<Animal*> Animals;
 public:
+    int getLenAnimals();
+    Animal* getAnimal(int index);
+
     virtual void show() = 0;
 
     virtual int getPlace() = 0;

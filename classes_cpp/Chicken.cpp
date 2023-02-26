@@ -5,3 +5,10 @@ void Chicken::show() {
     cout << ((age/30 <= 12) ? to_string(age/30) + " month old (" + to_string(age) + " days) ": to_string(age/360) + "years old (" + to_string(age) + " days) ");
     cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << endl;
 }
+
+void Chicken::getOld() {
+    this->updateAge();
+    if(this->getAge() >= 5400){
+        this->kill(1);
+    }
+}
