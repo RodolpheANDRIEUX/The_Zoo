@@ -32,11 +32,13 @@ public:
 
     bool checkPlaceForTiger();
 
-    bool checkPlaceForChiken();
+    bool checkPlaceForChicken();
 
     bool checkPlaceForEagle();
 
     void placeAnimal(Animal *animal);
+
+    void show();
 
     void gameOver() const;
 };

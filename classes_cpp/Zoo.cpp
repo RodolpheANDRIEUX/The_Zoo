@@ -115,7 +115,7 @@ bool Zoo::checkPlaceForTiger() {
     return false;
 }
 
-bool Zoo::checkPlaceForChiken() {
+bool Zoo::checkPlaceForChicken() {
     for ( auto habitat : habitats){
         if (dynamic_cast<ChickenCoop*>(habitat) && habitat->getPlace() > 0){
             return true;
@@ -170,24 +170,28 @@ void Zoo::placeAnimal(Animal *animal) {
                 Input = -1;
             }
         } while (Input < 0);
-        pair<int, int> err = habitats[Input]->receive(animal);
-        switch (err.first){
-            case 1:
-                steaks += err.second;
-                return;
-            case 2:
-                cout << "You are fined for endangering public safety: " << err.second << "euros" << endl;
-                if (!pay(err.second)){
-                    cout << "You don't have enough money to pay" << endl;
-                    gameOver();
+        for (auto index : availableIndex){
+            if (Input == index) {
+                pair<int, int> err = habitats[Input]->receive(animal);
+                switch (err.first) {
+                    case 1:
+                        steaks += err.second;
+                        return;
+                    case 2:
+                        cout << "You are fined for endangering public safety: " << err.second << "euros" << endl;
+                        if (!pay(err.second)) {
+                            cout << "You don't have enough money to pay" << endl;
+                            gameOver();
+                        }
+                        return;
+                    case 0:
+                        cout << "You have successfully welcomed a new animal in the Zoo!" << endl;
+                        return;
+                    default:
+                        cout << "*unknown error*" << endl;
+                        break;
                 }
-                return;
-            case 0:
-                cout << "You have successfully welcomed a new animal in the Zoo!" << endl;
-                return;
-            default:
-                cout << "*unknown error*" << endl;
-                break;
+            }
         }
     } while (true);
 }
@@ -196,4 +200,47 @@ void Zoo::gameOver() const {
     cout << "\n\nGAME OVER" << endl;
     cout << "Your survived " << Days << " days!" << endl;
     exit(EXIT_SUCCESS);
+}
+
+void Zoo::show() {
+    int Input;
+    do{
+        if (habitats.empty()){
+            cout << "Your Zoo is Empty!\nYou don't have any habitat yet. You can buy them on Amazon Zoo (buy in the main menu)" << endl;
+            return;
+        }
+
+        cout << "**** YOUR ZOO ****" << endl;
+        for (int i = 0; i < habitats.size(); i++){           // lists all habitats
+            int nbA = habitats[i]->getNbAnimals();
+            if (dynamic_cast<TigerEnclosure*>(habitats[i])) {
+                cout << "(" <<  i+1 << ") ";
+                cout << "Tiger Enclosure with";
+                cout << ((nbA == 0) ? "out any" : " " + to_string(nbA)) << " Tiger" << ((nbA > 1) ? "s" : "") << endl;
+            } else  if (dynamic_cast<ChickenCoop*>(habitats[i])) {
+                cout << "(" <<  i+1 << ") ";
+                cout << "Chicken Coop with";
+                cout << ((nbA == 0) ? "out any" : " " + to_string(nbA)) << " Chicken" << ((nbA > 1) ? "s" : "") << endl;
+            } else  if (dynamic_cast<EagleAviary*>(habitats[i])) {
+                cout << "(" <<  i+1 << ") ";
+                cout << "Eagle Aviary with";
+                cout << ((nbA == 0) ? "out any" : " " + to_string(nbA)) << " Eagle" << ((nbA > 1) ? "s" : "") << endl;
+            }
+        }
+        cout << "(0) Exit" << endl;
+
+
+        string strInput;
+        cin >> strInput;
+        try {
+            Input = stoi(strInput) ;
+        } catch (...) {
+            cout << "*unknown input*" << endl;
+            Input = -1;
+            continue;
+        }
+        if (Input > 0 && Input < habitats.size()+1){
+            habitats[Input-1]->show();
+        }
+    } while (Input != 0);
 }

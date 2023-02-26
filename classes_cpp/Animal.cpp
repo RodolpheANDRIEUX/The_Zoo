@@ -4,6 +4,10 @@ string Animal::getName() {
     return name;
 }
 
+bool Animal::getFemale() const {
+    return female;
+}
+
 void Animal::kill(int deathCode) {
     switch (deathCode){
         case 1:
@@ -21,3 +25,5 @@ void Animal::kill(int deathCode) {
     }
     delete this;
 }
+
+

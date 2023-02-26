@@ -8,7 +8,7 @@ class Chicken : public Animal{
 public:
     Chicken(string name, int age, bool female) : Animal(std::move(name), age, female){}
 
-    void sayHi() override;
+    void show() override;
 
 };
 

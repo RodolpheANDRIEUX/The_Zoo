@@ -36,7 +36,7 @@ int main() {
                 amazonZoo.openBoutique(&zoo);
                 break;
             case 2:
-                //zoo.show();
+                zoo.show();
                 break;
             case 3:
                 cout << "\n**** PASS TIME ****" << endl;

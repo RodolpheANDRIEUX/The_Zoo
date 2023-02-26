@@ -32,6 +32,7 @@ public:
         catalog[212] = {"4 years old Female Eagle", 4000};
         catalog[213] = {"14 years old Male Eagle", 2000};
         catalog[214] = {"14 years old Female Eagle", 2000};
+
     }
 
     void openBoutique(Zoo *client);

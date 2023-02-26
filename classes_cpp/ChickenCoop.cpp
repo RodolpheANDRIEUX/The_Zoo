@@ -4,7 +4,14 @@
 #include "../headers/Chicken.h"
 
 void ChickenCoop::show() {
-
+    cout << "** CHICKEN COOP **" << endl;
+    if (Animals.empty()){
+        cout << "10 available places" << endl;
+        return;
+    }
+    for (auto & Animal : Animals){
+        Animal->show();
+    }
 }
 
 int ChickenCoop::getPlace() {
