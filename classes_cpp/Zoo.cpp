@@ -165,17 +165,29 @@ void Zoo::customMenu() {
 }
 
 void Zoo::passTime(size_t nbDays) {
-    while(nbDays != 0)
-    {
-
-        for(size_t i = 0; i < this->habitats.size(); i++)
-        {
-            getSick(reinterpret_cast<Animal *>(this->habitats[i]));
-        }
-        nbDays--;
+    for(size_t i = 0; i < nbDays; i++) {
+        nextDay();
     }
-}
+};
 
-void Zoo::getSick(Animal* animal) {
+void Zoo::nextDay() {
+    // TODO handleSickness
 
+    // TODO handleReproduction
+
+    // TODO handleBirth
+
+    // TODO checkOvercrowding
+
+    // TODO EventFire
+
+    // TODO EventRob
+
+    // TODO EventPests
+
+    // TODO EventSpoiledMeats
+
+    // TODO Eat
+
+    // TODO Old
 }

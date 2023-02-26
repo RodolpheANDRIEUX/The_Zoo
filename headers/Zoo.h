@@ -50,7 +50,7 @@ public:
     void passTime(size_t nbDays);
 
     // Event
-    void getSick(Animal* animal);
+    void nextDay();
 };
 
 
