@@ -36,11 +36,9 @@ public:
 
     bool checkPlaceForEagle();
 
-    void placeTiger(int article);
+    void placeAnimal(Animal *animal);
 
-    void placeChicken(int article);
-
-    void placeEagle(int article);
+    void gameOver() const;
 
     // Pass time
     void skipMenu();

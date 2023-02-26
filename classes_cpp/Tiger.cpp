@@ -3,3 +3,7 @@
 //
 
 #include "../headers/Tiger.h"
+
+void Tiger::sayHi() {
+    cout << "ROARRR!" << endl;
+}

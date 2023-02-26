@@ -10,12 +10,13 @@ using namespace std;
 
 
 class EagleAviary : public Habitat{
-    vector<Eagle*> eagles;
 
 public:
     void show() override;
 
     int getPlace() override;
+
+    pair<int, int> receive(Animal *newAnimal) override;
 };
 
 

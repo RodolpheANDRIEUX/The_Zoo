@@ -8,12 +8,14 @@ using namespace std;
 
 
 class ChickenCoop : public Habitat{
-    vector<Chicken*> chickens;
-    int Eggs;
+    int Eggs{};
+
 public:
     void show() override;
 
     int getPlace() override;
+
+    pair<int, int> receive(Animal *newAnimal) override;
 };
 
 

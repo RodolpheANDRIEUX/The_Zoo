@@ -7,13 +7,13 @@
 
 
 class TigerEnclosure : public Habitat{
-    Tiger* tiger1 = nullptr;
-    Tiger* tiger2 = nullptr;
 
 public:
     void show() override;
 
     int getPlace() override;
+
+    pair<int, int> receive(Animal *newAnimal) override;
 };
 
 

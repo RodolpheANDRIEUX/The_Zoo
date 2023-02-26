@@ -11,3 +11,9 @@ void EagleAviary::show() {
 int EagleAviary::getPlace() {
     return 4 - nbAnimal;
 }
+
+pair<int, int> EagleAviary::receive(Animal *newAnimal) {
+    Animals.push_back(newAnimal);
+    nbAnimal++;
+    return {0,0};
+}

@@ -73,6 +73,7 @@ void AmazonZoo::habitatMenu(Zoo* client){
         cout << "(1) For Tiger (can contain up to 2 Tigers)" << endl;
         cout << "(2) For Chicken (can contain up to 10 chickens)" << endl;
         cout << "(3) For Eagles (can contain up to 4 eagles)" << endl;
+        cout << "(4) Starter Pack (2 for Tigers, 2 for Chickens and 2 for Eagles)" << endl;
         cout << "(0) back to menu" << endl;
         cin >> userInput; Input = (int)userInput[0] - 48;
         switch (Input)
@@ -86,6 +87,17 @@ void AmazonZoo::habitatMenu(Zoo* client){
             case 3:
                 sell(client, 103); // Eagle Aviary
                 break;
+            case 4:
+                if (client->pay(8600)) {
+                    cout << "*payment accepted*" << endl;
+                    cout << "Your Balance is now " << client->getMoney() << "euro" << endl;
+                    client->give(101, 2);
+                    client->give(102, 2);
+                    client->give(103, 2);
+                    return;
+                }
+                cout << "payment declined" << endl;
+                return;
             case 0:
                 break;
             default:
@@ -183,14 +195,22 @@ void AmazonZoo::animalMenu(Zoo* client){
 }
 
 void AmazonZoo::sell(Zoo *client, int article) {
-    double quantity;
+    int quantity = 0;
     double price;
     string userInput;
     int Input;
 
     cout << "\n** Buying "<< catalog[article].first << " (" << catalog[article].second << "euro" << ((article <= 100) ? "/kg) **" : ") **") << endl;
-    cout << "Quantity" << ((article <= 100) ? " (kg): " : ": ");
-    cin >> quantity;
+    do {
+        cout << "Quantity" << ((article <= 100) ? " (kg): " : ": ");
+        string quantityInput;
+        cin >> quantityInput;
+        try {
+            quantity = stoi(quantityInput);
+        } catch (...) {
+            quantity = 0;
+        }
+    } while (quantity < 1);
     price = quantity * catalog[article].second;
     cout << "It will be " << price << "euro. Continue?" << endl;
 
@@ -215,19 +235,19 @@ void AmazonZoo::sell(Zoo *client, int article) {
 void AmazonZoo::placeAnimal(Zoo *client, int article) {
     if (article >= 201 && article <= 206){ // If its a Tiger
         if (!client->checkPlaceForTiger()){
-            cout << "" << endl;
+            cout << "There is no place yet for a Tiger in Your Zoo" << endl;
             return;
         }
         sell(client, article);
     } else if (article >= 207 && article <= 208){ // If its a chicken
         if (!client->checkPlaceForChiken()){
-            cout << "" << endl;
+            cout << "There is no place yet for a Chicken in Your Zoo" << endl;
             return;
         }
         sell(client, article);
     }else if (article >= 209 && article <= 214){ // If its an Eagle
         if (!client->checkPlaceForEagle()){
-            cout << "" << endl;
+            cout << "There is no place yet for an Eagle in Your Zoo" << endl;
             return;
         }
         sell(client, article);

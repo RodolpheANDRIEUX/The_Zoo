@@ -3,3 +3,11 @@
 //
 
 #include "../headers/Chicken.h"
+
+void Chicken::sayHi() {
+    if (female){
+        cout << "cluck cluck..." << endl;
+        return;
+    }
+    cout << "cock-a-doodle-doooo!" << endl;
+}
