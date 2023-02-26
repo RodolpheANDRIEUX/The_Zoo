@@ -284,17 +284,18 @@ void Zoo::customMenu() {
     int Input;
 
     do {
-        cout << "\n**** CUSTOM PASS TIME ****" << endl;
-        cout << "(0) back to menu" << endl;
         cout << "How much days to skip ?" << endl;
-        cin >> userInput;
-        Input = (int) userInput[0] - 48;
-        switch (Input) {
-            case 0:
-                break;
-            default:
-                passTime(Input);
-                return;
+        string strInput;
+        cin >> strInput;
+        try {
+            Input = stoi(strInput) ;
+        } catch (...) {
+            cout << "*unknown input*" << endl;
+            Input = -1;
+            continue;
+        }
+        if (Input >= 0){
+            passTime(Input);
         }
     } while (Input != 0);
 }
