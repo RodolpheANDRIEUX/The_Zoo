@@ -107,3 +107,75 @@ void Zoo::placeChicken(int article) {
 void Zoo::placeEagle(int article) {
     // TODO selectionner un habitat et y creer un Aigle
 }
+
+
+// Next Day
+void Zoo::skipMenu() {
+    string userInput;
+    int Input;
+
+    do {
+        cout << "(1) One day" << endl;
+        cout << "(2) One month" << endl;
+        cout << "(3) One year" << endl;
+        cout << "(4) Custom" << endl;
+        cout << "(0) back to menu" << endl;
+        cin >> userInput;
+        Input = (int) userInput[0] - 48;
+        switch (Input) {
+            case 1:
+                passTime(1);
+                return;
+            case 2:
+                passTime(30);
+                return;
+            case 3:
+                passTime(360);
+                return;
+            case 4:
+                customMenu();
+                return;
+            case 0:
+                break;
+            default:
+                cout << "*unknown input*" << endl;
+                break;
+        }
+    } while (Input != 0);
+}
+
+void Zoo::customMenu() {
+    string userInput;
+    int Input;
+
+    do {
+        cout << "\n**** CUSTOM PASS TIME ****" << endl;
+        cout << "(0) back to menu" << endl;
+        cout << "How much days to skip ?" << endl;
+        cin >> userInput;
+        Input = (int) userInput[0] - 48;
+        switch (Input) {
+            case 0:
+                break;
+            default:
+                passTime(Input);
+                return;
+        }
+    } while (Input != 0);
+}
+
+void Zoo::passTime(size_t nbDays) {
+    while(nbDays != 0)
+    {
+
+        for(size_t i = 0; i < this->habitats.size(); i++)
+        {
+            getSick(reinterpret_cast<Animal *>(this->habitats[i]));
+        }
+        nbDays--;
+    }
+}
+
+void Zoo::getSick(Animal* animal) {
+
+}

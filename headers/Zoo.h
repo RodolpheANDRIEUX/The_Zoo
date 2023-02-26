@@ -3,6 +3,7 @@ using namespace std;
 #include <utility>
 #include <vector>
 #include "Habitat.h"
+#include "Animal.h"
 
 #ifndef UNTITLED1_ZOO_H
 #define UNTITLED1_ZOO_H
@@ -40,6 +41,16 @@ public:
     void placeChicken(int article);
 
     void placeEagle(int article);
+
+    // Pass time
+    void skipMenu();
+
+    void customMenu();
+
+    void passTime(size_t nbDays);
+
+    // Event
+    void getSick(Animal* animal);
 };
 
 

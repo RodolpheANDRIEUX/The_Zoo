@@ -1,6 +1,7 @@
 #include <iostream>
 #include "headers/Zoo.h"
 #include "headers/AmazonZoo.h"
+
 using namespace std;
 
 
@@ -36,11 +37,11 @@ int main() {
                 amazonZoo.openBoutique(&zoo);
                 break;
             case 2:
-                //zoo.show();
+                zoo.show();
                 break;
             case 3:
                 cout << "\n**** PASS TIME ****" << endl;
-                //zoo.timeMenu();
+                zoo.skipMenu();
                 break;
             case 0:
                 break;
