@@ -1,7 +1,14 @@
 #include "../headers/TigerEnclosure.h"
 
 void TigerEnclosure::show() {
-
+    cout << "** TIGER ENCLOSURE **" << endl;
+    if (Animals.empty()){
+        cout << "2 available places" << endl;
+        return;
+    }
+    for (auto & Animal : Animals){
+        Animal->show();
+    }
 }
 
 int TigerEnclosure::getPlace() {

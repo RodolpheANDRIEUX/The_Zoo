@@ -16,6 +16,10 @@ public:
     virtual int getPlace() = 0;
 
     virtual pair<int, int> receive(Animal *newAnimal) = 0;
+
+    int getNbAnimals() const;
+
+    bool checkHabitat();
 };
 
 

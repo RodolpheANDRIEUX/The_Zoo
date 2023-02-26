@@ -1,4 +1,3 @@
-
 #include "Habitat.h"
 #include "Tiger.h"
 

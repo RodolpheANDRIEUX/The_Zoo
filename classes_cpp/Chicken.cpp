@@ -1,13 +1,7 @@
-//
-// Created by rodol on 23/02/2023.
-//
-
 #include "../headers/Chicken.h"
 
-void Chicken::sayHi() {
-    if (female){
-        cout << "cluck cluck..." << endl;
-        return;
-    }
-    cout << "cock-a-doodle-doooo!" << endl;
+void Chicken::show() {
+    cout << name << "(" << ((female) ? "hen) - " : "rooster) - ");
+    cout << ((age/30 <= 12) ? to_string(age/30) + " month old (" + to_string(age) + " days) ": to_string(age/360) + "years old (" + to_string(age) + " days) ");
+    cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << endl;
 }

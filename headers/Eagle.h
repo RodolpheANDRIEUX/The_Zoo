@@ -5,11 +5,12 @@
 
 
 class Eagle : public Animal {
+    Eagle* mate = nullptr;
 
 public:
     Eagle(string name, int age, bool female) : Animal(std::move(name), age, female){}
 
-    void sayHi() override;
+    void show() override;
 };
 
 

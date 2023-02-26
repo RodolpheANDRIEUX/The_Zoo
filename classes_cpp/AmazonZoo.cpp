@@ -240,7 +240,7 @@ void AmazonZoo::placeAnimal(Zoo *client, int article) {
         }
         sell(client, article);
     } else if (article >= 207 && article <= 208){ // If its a chicken
-        if (!client->checkPlaceForChiken()){
+        if (!client->checkPlaceForChicken()){
             cout << "There is no place yet for a Chicken in Your Zoo" << endl;
             return;
         }

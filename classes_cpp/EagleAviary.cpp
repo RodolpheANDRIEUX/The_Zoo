@@ -1,11 +1,14 @@
-//
-// Created by rodol on 23/02/2023.
-//
-
 #include "../headers/EagleAviary.h"
 
 void EagleAviary::show() {
-
+    cout << "** EAGLE AVIARY **" << endl;
+    if (Animals.empty()){
+        cout << "4 available places" << endl;
+        return;
+    }
+    for (auto & Animal : Animals){
+        Animal->show();
+    }
 }
 
 int EagleAviary::getPlace() {

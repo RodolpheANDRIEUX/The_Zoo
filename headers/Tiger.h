@@ -10,7 +10,7 @@ class Tiger : public Animal {
 public:
     Tiger(string name, int age, bool female) : Animal(std::move(name), age, female){}
 
-    void sayHi() override;
+    void show() override;
 };
 
 

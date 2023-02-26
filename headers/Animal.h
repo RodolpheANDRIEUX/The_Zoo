@@ -7,14 +7,15 @@ using namespace std;
 
 
 class Animal {
-    string name;
-    int age; // days
-    bool hungry = false;
-    bool sick = false;
     int ShyCoolDown = 30;
 
 protected:
     bool female;
+    string name;
+    int age; // days
+    bool sick = false;
+    bool hungry = false;
+
 public:
     Animal(string name, int age, bool female) : name(std::move(name)), age(age), female(female){}
 
@@ -22,7 +23,11 @@ public:
 
     string getName();
 
-    virtual void sayHi() = 0;
+    bool getFemale() const;
+
+    virtual void show() = 0;
+
+    bool everythingok() const;
 };
 
 
