@@ -26,4 +26,11 @@ void Animal::kill(int deathCode) {
     delete this;
 }
 
+bool Animal::everythingok() const {
+    if (hungry || sick){
+        return false;
+    }
+    return true;
+}
+
 

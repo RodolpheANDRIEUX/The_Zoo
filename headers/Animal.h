@@ -12,10 +12,10 @@ class Animal {
 protected:
     bool female;
     string name;
-    int age;
+    int age; // days
     bool sick = false;
-// days
-bool hungry = false;
+    bool hungry = false;
+
 public:
     Animal(string name, int age, bool female) : name(std::move(name)), age(age), female(female){}
 
@@ -26,6 +26,8 @@ public:
     bool getFemale() const;
 
     virtual void show() = 0;
+
+    bool everythingok() const;
 };
 
 
