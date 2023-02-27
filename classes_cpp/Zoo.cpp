@@ -287,15 +287,16 @@ void Zoo::customMenu() {
         cout << "How much days to skip ?" << endl;
         string strInput;
         cin >> strInput;
-        try {
-            Input = stoi(strInput) ;
-        } catch (...) {
-            cout << "*unknown input*" << endl;
-            Input = -1;
-            continue;
-        }
-        if (Input >= 0){
-            passTime(Input);
+        cout << "strInput: " << strInput << endl;
+        Input = stoi(strInput) ;
+        cout << "Input: " << Input << endl;
+        switch(Input)
+        {
+            case 0:
+                break;
+            default:
+                passTime(Input);
+                return;
         }
     } while (Input != 0);
 }
