@@ -112,8 +112,8 @@ void AmazonZoo::sexeMenu(Zoo *client, int articleID) {
     int Input;
     do {
         cout << "\n**** Male or Female ****                                  Balance: " << client->getMoney() << "euro" << endl;
-        cout << "(1) " << ((articleID == 207) ? "6 month getOld Rooster" : "Male") << endl;
-        cout << "(2) " << ((articleID == 207) ? "6 month getOld Hen" : "Female") << endl;
+        cout << "(1) " << ((articleID == 207) ? "6 month Old Rooster" : "Male") << endl;
+        cout << "(2) " << ((articleID == 207) ? "6 month Old Hen" : "Female") << endl;
         cout << "(0) back to menu" << endl;
         cin >> userInput; Input = (int)userInput[0] - 48;
         switch (Input)
@@ -139,9 +139,9 @@ void AmazonZoo::ageMenu(Zoo *client, int animalID) {
 
     do {
         cout << "\n**** " << ((animalID == 201) ? "TIGERS" : "EAGLES") << " ****                                  Balance: " << client->getMoney() << "euro" << endl;
-        cout << "(1) 6 month getOld" << endl;
-        cout << "(2) 4 years getOld" << endl;
-        cout << "(3) 14 years getOld" << endl;
+        cout << "(1) 6 month Old" << endl;
+        cout << "(2) 4 years Old" << endl;
+        cout << "(3) 14 years Old" << endl;
         cout << "(0) back to menu" << endl;
         cin >> userInput; Input = (int)userInput[0] - 48;
         switch (Input)
