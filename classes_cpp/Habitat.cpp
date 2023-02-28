@@ -2,12 +2,17 @@
 #include "../headers/Habitat.h"
 
 void Habitat::getAnimals(int code) {
-    for(int i = 0; i < Animals.size(); i++) {
-        switch(code)
-        {
+    bool isDead;
+    for (auto i = Animals.begin(); i != Animals.end(); i++) {
+        if ((*i) == NULL) {
+            break;
+        }
+        switch (code) {
             case 1:
-                if(Animals[i] != nullptr) {
-                    Animals[i]->getOld();
+                isDead = (*i)->getOld();
+                if (isDead) {
+                    Animals.erase(i);
+                    nbAnimal--;
                 }
                 break;
             case 2:
@@ -18,6 +23,7 @@ void Habitat::getAnimals(int code) {
         }
     }
 }
+
 int Habitat::getNbAnimals() const {
     return nbAnimal;
 }

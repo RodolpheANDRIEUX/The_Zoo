@@ -287,9 +287,7 @@ void Zoo::customMenu() {
         cout << "How much days to skip ?" << endl;
         string strInput;
         cin >> strInput;
-        cout << "strInput: " << strInput << endl;
         Input = stoi(strInput) ;
-        cout << "Input: " << Input << endl;
         switch(Input)
         {
             case 0:

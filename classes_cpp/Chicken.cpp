@@ -6,9 +6,11 @@ void Chicken::show() {
     cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << endl;
 }
 
-void Chicken::getOld() {
+bool Chicken::getOld() {
     age++;
-    if(age >= 182){
+    if(age >= 5400){
         this->kill(1);
+        return true;
     }
+    return false;
 }

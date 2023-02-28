@@ -29,7 +29,7 @@ public:
 
     bool everythingok() const;
 
-    virtual void getOld() = 0;
+    virtual bool getOld() = 0;
 };
 
 

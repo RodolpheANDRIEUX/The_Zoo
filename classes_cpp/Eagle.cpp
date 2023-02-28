@@ -6,9 +6,11 @@ void Eagle::show() {
     cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << endl;
 }
 
-void Eagle::getOld() {
+bool Eagle::getOld() {
     age++;
     if(age >= 9000){
         this->kill(1);
+        return true;
     }
+    return false;
 }

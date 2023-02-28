@@ -11,6 +11,7 @@ protected:
     int nbAnimal = 0;
     vector<Animal*> Animals;
 public:
+    // La méthode getAnimals peut être modulable avec des code passé en paramètre.
     void getAnimals(int code);
 
     virtual void show() = 0;

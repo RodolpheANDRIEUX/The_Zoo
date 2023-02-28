@@ -10,9 +10,11 @@ void Tiger::show() {
     cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << endl;
 }
 
-void Tiger::getOld() {
+bool Tiger::getOld() {
     age++;
-    if(age >= 182){
+    if(age >= 9000){
         this->kill(1);
+        return true;
     }
+    return false;
 }

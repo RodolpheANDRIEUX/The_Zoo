@@ -12,7 +12,7 @@ public:
 
     void show() override;
 
-    void getOld();
+    bool getOld();
 };
 
 
