@@ -1,12 +1,22 @@
 #include <algorithm>
 #include "../headers/Habitat.h"
 
-int Habitat::getLenAnimals() {
-    return this->Animals.size();
-}
-
-Animal* Habitat::getAnimal(int index) {
-    return Animals[index];
+void Habitat::getAnimals(int code) {
+    for(int i = 0; i < Animals.size(); i++) {
+        switch(code)
+        {
+            case 1:
+                if(Animals[i] != nullptr) {
+                    Animals[i]->getOld();
+                }
+                break;
+            case 2:
+                break;
+            default:
+                cout << "*Préciser un 'code' pour la méthode 'getAnimals'*" << endl;
+                break;
+        }
+    }
 }
 int Habitat::getNbAnimals() const {
     return nbAnimal;

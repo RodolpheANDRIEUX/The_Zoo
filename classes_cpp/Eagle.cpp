@@ -7,8 +7,8 @@ void Eagle::show() {
 }
 
 void Eagle::getOld() {
-    this->updateAge();
-    if(this->getAge() >= 9000){
+    age++;
+    if(age >= 9000){
         this->kill(1);
     }
 }

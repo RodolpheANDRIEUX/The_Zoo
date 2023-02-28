@@ -30,9 +30,6 @@ public:
     bool everythingok() const;
 
     virtual void getOld() = 0;
-
-    void updateAge();
-    int getAge();
 };
 
 

@@ -7,8 +7,8 @@ void Chicken::show() {
 }
 
 void Chicken::getOld() {
-    this->updateAge();
-    if(this->getAge() >= 5400){
+    age++;
+    if(age >= 182){
         this->kill(1);
     }
 }

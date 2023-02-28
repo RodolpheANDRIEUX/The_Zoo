@@ -326,14 +326,11 @@ void Zoo::nextDay() {
 
     // TODO Eat
 
-    // TODO Old
     EventOld();
 }
 
 void Zoo::EventOld() {
-    for(int i = 0; i < this->habitats.size(); i++) {
-        for(int j = 0; j < this->habitats[i]->getLenAnimals(); j++) {
-            this->habitats[i]->getAnimal(j)->getOld();
-        }
+    for(int i = 0; i < habitats.size(); i++) {
+        habitats[i]->getAnimals(1);
     }
 }

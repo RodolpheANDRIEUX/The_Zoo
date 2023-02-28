@@ -11,8 +11,8 @@ void Tiger::show() {
 }
 
 void Tiger::getOld() {
-    this->updateAge();
-    if(this->getAge() >= 9000){
+    age++;
+    if(age >= 182){
         this->kill(1);
     }
 }
