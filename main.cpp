@@ -20,6 +20,8 @@ using namespace std;
 int main() {
     Zoo zoo("Our zoo");
     AmazonZoo amazonZoo;
+    cout << "####  WELCOME TO YOUR ZOO \"LE ZOO\"!  ####" << endl;
+    cout << "You have 1 month of food left!" << endl;
 
     string userInput;
     int Input;

@@ -210,7 +210,7 @@ void Zoo::show() {
             return;
         }
 
-        cout << "**** YOUR ZOO ****" << endl;
+        cout << "\n**** YOUR ZOO ****" << endl;
         for (int i = 0; i < habitats.size(); i++){           // lists all habitats
             int nbA = habitats[i]->getNbAnimals();
             bool ping = habitats[i]->checkHabitat();
