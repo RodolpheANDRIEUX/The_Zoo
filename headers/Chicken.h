@@ -10,6 +10,7 @@ public:
 
     void show() override;
 
+    void getSick();
     bool getOld();
 };
 

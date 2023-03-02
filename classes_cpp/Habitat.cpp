@@ -3,6 +3,7 @@
 
 void Habitat::getAnimals(int code) {
     bool isDead;
+    bool isSick;
     for (auto i = Animals.begin(); i != Animals.end(); i++) {
         if ((*i) == NULL) {
             break;
@@ -16,6 +17,7 @@ void Habitat::getAnimals(int code) {
                 }
                 break;
             case 2:
+                (*i)->getSick();
                 break;
             default:
                 cout << "*Préciser un 'code' pour la méthode 'getAnimals'*" << endl;

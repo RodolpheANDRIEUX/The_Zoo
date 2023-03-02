@@ -14,6 +14,7 @@ protected:
     string name;
     int age; // days
     bool sick = false;
+    int fdSick;
     bool hungry = false;
 
 public:
@@ -30,6 +31,8 @@ public:
     bool everythingok() const;
 
     virtual bool getOld() = 0;
+
+    virtual void getSick() = 0;
 };
 
 

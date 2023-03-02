@@ -306,7 +306,7 @@ void Zoo::passTime(size_t nbDays) {
 };
 
 void Zoo::nextDay() {
-    // TODO handleSickness
+    handleSickness();
 
     // TODO handleReproduction
 
@@ -324,10 +324,16 @@ void Zoo::nextDay() {
 
     // TODO Eat
 
-    EventOld();
+    eventOld();
 }
 
-void Zoo::EventOld() {
+void Zoo::handleSickness() {
+    for(int i = 0; i < habitats.size(); i++) {
+        habitats[i]->getAnimals(2);
+    }
+}
+
+void Zoo::eventOld() {
     for(int i = 0; i < habitats.size(); i++) {
         habitats[i]->getAnimals(1);
     }

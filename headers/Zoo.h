@@ -52,7 +52,9 @@ public:
     // Event
     void nextDay();
 
-    void EventOld();
+    void handleSickness();
+
+    void eventOld();
 };
 
 
