@@ -1,4 +1,5 @@
 #include "../headers/Animal.h"
+#include "../headers/Eagle.h"
 
 string Animal::getName() {
     return name;
@@ -36,14 +37,10 @@ bool Animal::everythingok() const {
     return true;
 }
 
-void Animal::getPregnant() {
-    cout << "test ok" << endl;
-    pregnancy = 1; // first day
-}
-
 void Animal::getsShy(int i) {
     shyCoolDown = i;
 }
+
 
 
 

@@ -35,11 +35,12 @@ public:
 
     virtual void getSick() = 0;
 
-    void getPregnant();
+    virtual void getPregnant(Animal* mate) = 0;
 
     virtual bool isSexuallyPredisposed() = 0;
 
     void getsShy(int i);
+
 };
 
 

@@ -16,6 +16,8 @@ public:
     bool getOld();
 
     bool isSexuallyPredisposed() override;
+
+    void getPregnant(Animal *mate) override;
 };
 
 

@@ -2,9 +2,9 @@
 #include "../headers/Chicken.h"
 
 void Chicken::show() {
-    cout << name << "(" << ((female) ? "hen) - " : "rooster) - ");
+    cout << name << "(" << ((age/30 <= 6) ? "baby " : "") << ((female) ? "hen) - " : "rooster) - ");
     cout << ((age/30 <= 12) ? to_string(age/30) + " month old (" + to_string(age) + " days) ": to_string(age/360) + "years old (" + to_string(age) + " days) ");
-    cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << endl;
+    cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sick || hungry)? "     /!\\" : "") << endl;
 }
 
 void Chicken::getSick() {
@@ -40,4 +40,8 @@ bool Chicken::isSexuallyPredisposed() {
     } else { // for male
         return age >= 180 && age <= 2880 && shyCoolDown == 0;
     }
+}
+
+void Chicken::getPregnant(Animal *mate) {
+    pregnancy = 1;
 }

@@ -16,6 +16,10 @@ public:
     bool getOld();
 
     bool isSexuallyPredisposed() override;
+
+    void marry(Eagle* newMate);
+
+    void getPregnant(Animal *mate) override;
 };
 
 

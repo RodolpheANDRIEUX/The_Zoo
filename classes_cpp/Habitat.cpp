@@ -46,7 +46,7 @@ void Habitat::checkReproductions() {
             for(auto & female : Animals) { // and a valid female
                 if (female->getFemale() && female->isSexuallyPredisposed()){
 
-                    female->getPregnant();
+                    female->getPregnant(male);
                     return;
                 }
             }
