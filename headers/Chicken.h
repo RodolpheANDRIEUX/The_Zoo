@@ -1,4 +1,5 @@
 #include "Animal.h"
+#include "../headers/Utils.h"
 
 #ifndef UNTITLED1_CHICKEN_H
 #define UNTITLED1_CHICKEN_H

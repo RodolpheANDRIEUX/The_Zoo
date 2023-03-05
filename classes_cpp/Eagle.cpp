@@ -1,5 +1,6 @@
 #include <random>
 #include "../headers/Eagle.h"
+#include "../headers/Utils.h"
 
 void Eagle::show() {
     cout << name << "(" << ((female) ? "Female) - " : "Male) - ");
@@ -9,19 +10,18 @@ void Eagle::show() {
 
 void Eagle::getSick() {
     if(!sick) {
-        random_device rd;
-        mt19937 gen(rd());
+        int random = Utils::getRandomNumber();
 
-        std::uniform_int_distribution<> dis(0, 360);
-
-        int random = dis(gen);
-        if(random < 36) {
-            cout << name << "is sick" << endl;
+        if(random < 100) {
+            cout << "*" << name << " is sick*" << endl;
             sick = true;
-            fdSick = age;
+            sickCoolDown = 30;
         }
-    } else if((age-fdSick) <= 30) {
+    } else if(sickCoolDown <= 0) {
+        cout << "*" << name << " is neat*" << endl;
         sick = false;
+    } else {
+        sickCoolDown--;
     }
 }
 

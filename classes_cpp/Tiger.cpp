@@ -4,6 +4,7 @@
 
 #include <random>
 #include "../headers/Tiger.h"
+#include "../headers/Utils.h"
 
 void Tiger::show() {
     cout << name << "(" << ((female) ? "Female) - " : "Male) - ");
@@ -13,20 +14,18 @@ void Tiger::show() {
 
 void Tiger::getSick() {
     if(!sick) {
-        random_device rd;
-        mt19937 gen(rd());
+        int random = Utils::getRandomNumber();
 
-        std::uniform_int_distribution<> dis(0, 360);
-
-        int random = dis(gen);
-        if(random < 108) {
+        if(random < 300) {
             cout << "*" << name << " is sick*" << endl;
             sick = true;
-            fdSick = age;
+            sickCoolDown = 15;
         }
-    } else if((age-fdSick) >= 15) {
+    } else if(sickCoolDown <= 0) {
         cout << "*" << name << " is neat*" << endl;
         sick = false;
+    } else {
+        sickCoolDown--;
     }
 }
 

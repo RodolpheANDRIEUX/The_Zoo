@@ -14,7 +14,7 @@ protected:
     string name;
     int age; // days
     bool sick = false;
-    int fdSick;
+    int sickCoolDown;
     bool hungry = false;
 
 public:

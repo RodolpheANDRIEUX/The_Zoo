@@ -1,5 +1,6 @@
 #include <random>
 #include "../headers/Chicken.h"
+#include "../headers/Utils.h"
 
 void Chicken::show() {
     cout << name << "(" << ((female) ? "hen) - " : "rooster) - ");
@@ -9,25 +10,24 @@ void Chicken::show() {
 
 void Chicken::getSick() {
     if(!sick) {
-        random_device rd;
-        mt19937 gen(rd());
+        int random = Utils::getRandomNumber();
 
-        std::uniform_int_distribution<> dis(0, 360);
-
-        int random = dis(gen);
-        if(random < 18) {
-            cout << name << "is sick" << endl;
+        if(random < 50) {
+            cout << "*" << name << " is sick*" << endl;
             sick = true;
-            fdSick = age;
+            sickCoolDown = 5;
         }
-    } else if((age-fdSick) <= 5) {
+    } else if(sickCoolDown <= 0) {
+        cout << "*" << name << " is neat*" << endl;
         sick = false;
+    } else {
+        sickCoolDown--;
     }
 }
 
 bool Chicken::getOld() {
     age++;
-    if(age >= 5400){
+    if(age >= 182){
         this->kill(1);
         return true;
     }
