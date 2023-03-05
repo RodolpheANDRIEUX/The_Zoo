@@ -19,6 +19,9 @@ void Animal::kill(int deathCode) {
         case 3:
             cout << "*" << name << " escaped the Zoo*" << endl;
             break;
+        case 4:
+            cout << "*" << name << " died from overcrowding in his habitat*" << endl;
+            break;
         default:
             cout << "*" << name << " died*" << endl;
             break;
@@ -32,5 +35,15 @@ bool Animal::everythingok() const {
     }
     return true;
 }
+
+void Animal::getPregnant() {
+    cout << "test ok" << endl;
+    pregnancy = 1; // first day
+}
+
+void Animal::getsShy(int i) {
+    shyCoolDown = i;
+}
+
 
 

@@ -1,4 +1,5 @@
 #include "../headers/EagleAviary.h"
+#include "../headers/Utils.h"
 
 void EagleAviary::show() {
     cout << "** EAGLE AVIARY **" << endl;
@@ -19,4 +20,17 @@ pair<int, int> EagleAviary::receive(Animal *newAnimal) {
     Animals.push_back(newAnimal);
     nbAnimal++;
     return {0,0};
+}
+
+void EagleAviary::checkOverCrowding() {
+    if (Animals.size() > 4){
+        if (Utils::tirage(50)){
+            Animals[0]->kill(4);
+            Animals.erase(Animals.begin());
+            return;
+        }
+        overCrowded = true;
+        return;
+    }
+    overCrowded = false;
 }

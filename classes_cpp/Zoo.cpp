@@ -173,6 +173,7 @@ void Zoo::placeAnimal(Animal *animal) {
         for (auto index : availableIndex){
             if (Input == index) {
                 pair<int, int> err = habitats[Input]->receive(animal);
+                animal->getsShy(30);
                 switch (err.first) {
                     case 1:
                         steaks += err.second;
@@ -309,10 +310,16 @@ void Zoo::nextDay() {
     handleSickness();
 
     // TODO handleReproduction
+    for(auto & habitat : habitats) {
+        habitat->checkReproductions();
+    }
 
     // TODO handleBirth
 
     // TODO checkOvercrowding
+    for(auto & habitat : habitats) {
+        habitat->checkOverCrowding();
+    }
 
     // TODO EventFire
 

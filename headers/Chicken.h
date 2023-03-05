@@ -12,6 +12,8 @@ public:
 
     void getSick();
     bool getOld();
+
+    bool isSexuallyPredisposed() override;
 };
 
 

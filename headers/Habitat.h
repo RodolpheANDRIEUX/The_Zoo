@@ -8,6 +8,7 @@
 class Habitat {
 
 protected:
+    bool overCrowded = false;
     int nbAnimal = 0;
     vector<Animal*> Animals;
 public:
@@ -23,6 +24,10 @@ public:
     int getNbAnimals() const;
 
     bool checkHabitat();
+
+    void checkReproductions();
+
+    virtual void checkOverCrowding() = 0;
 };
 
 

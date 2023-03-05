@@ -16,6 +16,8 @@ public:
     int getPlace() override;
 
     pair<int, int> receive(Animal *newAnimal) override;
+
+    void checkOverCrowding() override;
 };
 
 

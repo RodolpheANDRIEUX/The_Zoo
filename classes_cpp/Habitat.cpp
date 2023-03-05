@@ -35,3 +35,21 @@ bool Habitat::checkHabitat() {
         return !animal->everythingok();
     });
 }
+
+void Habitat::checkReproductions() {
+    if (overCrowded){
+        return;
+    }
+    for(auto & male : Animals) { // if there is a valid male
+        if (!male->getFemale() && male->isSexuallyPredisposed()){
+
+            for(auto & female : Animals) { // and a valid female
+                if (female->getFemale() && female->isSexuallyPredisposed()){
+
+                    female->getPregnant();
+                    return;
+                }
+            }
+        }
+    }
+}

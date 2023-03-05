@@ -33,3 +33,11 @@ bool Chicken::getOld() {
     }
     return false;
 }
+
+bool Chicken::isSexuallyPredisposed() {
+    if (female) { // for female
+        return age >= 180 && age <= 2880 && pregnancy == 0 && shyCoolDown == 0;
+    } else { // for male
+        return age >= 180 && age <= 2880 && shyCoolDown == 0;
+    }
+}

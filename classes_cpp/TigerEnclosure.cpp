@@ -1,4 +1,5 @@
 #include "../headers/TigerEnclosure.h"
+#include "../headers/Utils.h"
 
 void TigerEnclosure::show() {
     cout << "** TIGER ENCLOSURE **" << endl;
@@ -28,4 +29,17 @@ pair<int, int> TigerEnclosure::receive(Animal *newAnimal) {
     }
     newAnimal->kill(3);
     return{2,500};
+}
+
+void TigerEnclosure::checkOverCrowding() {
+    if (Animals.size() > 2){
+        if (Utils::tirage(50)){
+            Animals[0]->kill(4);
+            Animals.erase(Animals.begin());
+            return;
+        }
+        overCrowded = true;
+        return;
+    }
+    overCrowded = false;
 }

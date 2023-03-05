@@ -33,3 +33,11 @@ bool Eagle::getOld() {
     }
     return false;
 }
+
+bool Eagle::isSexuallyPredisposed() {
+    if (female) { // for female
+        return age >= 1440 && age <= 5040 && pregnancy == 0 && shyCoolDown == 0;
+    } else { // for male
+        return age >= 1440 && age <= 5040 && shyCoolDown == 0;
+    }
+}
