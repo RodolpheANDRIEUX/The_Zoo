@@ -1,13 +1,11 @@
-//
-// Created by voluxyy on 03/03/23.
-//
-
-#ifndef UNTITLED1_UTILS_H
-#define UNTITLED1_UTILS_H
+#ifndef UTILS_H
+#define UTILS_H
 
 class Utils {
+
 public:
-    static int getRandomNumber();
+
+    static bool tirage(int probaPerMonth); // probability per month in % (ex: 1% per month -> 1) (ex: 10% per day -> 10 * 30 -> 300)
 };
 
-#endif //UNTITLED1_UTILS_H
+#endif //UTILS_H

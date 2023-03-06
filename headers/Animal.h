@@ -7,10 +7,11 @@ using namespace std;
 
 
 class Animal {
-    int ShyCoolDown = 30;
 
 protected:
+    int shyCoolDown = 0;
     bool female;
+    int pregnancy = 0;
     string name;
     int age; // days
     bool sick = false;
@@ -33,6 +34,14 @@ public:
     virtual bool getOld() = 0;
 
     virtual void getSick() = 0;
+
+    virtual void getPregnant(Animal* mate) = 0;
+
+    virtual bool isSexuallyPredisposed() = 0;
+
+    void getsShy(int i);
+
+    virtual bool birthDay(int date) = 0;
 };
 
 

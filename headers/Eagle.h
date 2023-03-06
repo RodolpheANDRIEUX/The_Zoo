@@ -14,6 +14,14 @@ public:
 
     void getSick();
     bool getOld();
+
+    bool isSexuallyPredisposed() override;
+
+    void marry(Eagle* newMate);
+
+    void getPregnant(Animal *withMate) override;
+
+    bool birthDay(int date) override;
 };
 
 

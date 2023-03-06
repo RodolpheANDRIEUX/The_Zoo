@@ -1,4 +1,5 @@
 #include "../headers/TigerEnclosure.h"
+#include "../headers/Utils.h"
 
 void TigerEnclosure::show() {
     cout << "** TIGER ENCLOSURE **" << endl;
@@ -12,13 +13,12 @@ void TigerEnclosure::show() {
 }
 
 int TigerEnclosure::getPlace() {
-    return 2 - nbAnimal;
+    return 2 - int(Animals.size());
 }
 
 pair<int, int> TigerEnclosure::receive(Animal *newAnimal) {
     if (dynamic_cast<Tiger*>(newAnimal)){
         Animals.push_back(newAnimal);
-        nbAnimal++;
         return {0, 0};
     }
     if (!Animals.empty()){
@@ -28,4 +28,41 @@ pair<int, int> TigerEnclosure::receive(Animal *newAnimal) {
     }
     newAnimal->kill(3);
     return{2,500};
+}
+
+void TigerEnclosure::checkOverCrowding() {
+    if (Animals.size() > 2){
+        if (Utils::tirage(50)){
+            Animals[0]->kill(4);
+            Animals.erase(Animals.begin());
+            return;
+        }
+        overCrowded = true;
+        return;
+    }
+    overCrowded = false;
+}
+
+void TigerEnclosure::dailyRoutine(int date) {
+//    for (auto tiger = Animals.begin(); tiger != Animals.end(); tiger++){
+//
+//        //sick
+//        //(*tiger)->getSick();
+//
+//        // birth
+//        if ((*tiger)->birthDay(date)){
+//            for (int j = 0 ; j < 3 ; j++){
+//                if (Utils::tirage(2000)){ // = 2 chance sur 3
+//                    Animals.push_back(new Tiger("Baby tiger", 0, Utils::tirage(1500))); // 1/2 chance male/female
+//                    cout << "A baby tiger is born!\n You should put him in a new habitat with his mother." << endl;
+//                }
+//            }
+//            (*tiger)->getsShy(510);
+//        }
+//
+//        //old
+//        if((*tiger)->getOld()){
+//            Animals.erase(tiger);
+//        }
+//    }
 }
