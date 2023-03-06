@@ -41,6 +41,7 @@ public:
 
     void getsShy(int i);
 
+    virtual bool birthDay(int date) = 0;
 };
 
 

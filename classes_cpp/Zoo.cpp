@@ -307,18 +307,16 @@ void Zoo::passTime(size_t nbDays) {
 };
 
 void Zoo::nextDay() {
-    handleSickness();
 
-    // TODO handleReproduction
-    for(auto & habitat : habitats) {
-        habitat->checkReproductions();
-    }
+    Days++;
 
-    // TODO handleBirth
-
-    // TODO checkOvercrowding
-    for(auto & habitat : habitats) {
+    for(auto & habitat : habitats) { // apply to every habitat
         habitat->checkOverCrowding();
+        habitat->checkReproductions();
+        habitat->dailyRoutine(Days); // sickness, birth and old
+//        money += habitat->countIncomes(Days);
+//        steaks -= habitat->meatConsomation();    // TODO Eat
+//        grains -= habitat->grainsConsomation();
     }
 
     // TODO EventFire
@@ -328,20 +326,4 @@ void Zoo::nextDay() {
     // TODO EventPests
 
     // TODO EventSpoiledMeats
-
-    // TODO Eat
-
-    eventOld();
-}
-
-void Zoo::handleSickness() {
-    for(int i = 0; i < habitats.size(); i++) {
-        habitats[i]->getAnimals(2);
-    }
-}
-
-void Zoo::eventOld() {
-    for(int i = 0; i < habitats.size(); i++) {
-        habitats[i]->getAnimals(1);
-    }
 }

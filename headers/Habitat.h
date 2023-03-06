@@ -9,12 +9,9 @@ class Habitat {
 
 protected:
     bool overCrowded = false;
-    int nbAnimal = 0;
     vector<Animal*> Animals;
-public:
-    // La méthode getAnimals peut être modulable avec des code passé en paramètre.
-    void getAnimals(int code);
 
+public:
     virtual void show() = 0;
 
     virtual int getPlace() = 0;
@@ -28,6 +25,8 @@ public:
     void checkReproductions();
 
     virtual void checkOverCrowding() = 0;
+
+    virtual void dailyRoutine(int date) = 0;
 };
 
 

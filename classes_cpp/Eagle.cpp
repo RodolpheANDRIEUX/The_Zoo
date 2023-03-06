@@ -1,5 +1,6 @@
 #include <random>
 #include "../headers/Eagle.h"
+#include "../headers/Utils.h"
 
 void Eagle::show() {
     cout << name << "(" << ((female) ? ((pregnancy > 0) ? "Female) - Pregnant, " : "Female) - ") : "Male) - ");
@@ -27,9 +28,11 @@ void Eagle::getSick() {
 
 bool Eagle::getOld() {
     age++;
-    if(age >= 9000){
-        this->kill(1);
-        return true;
+    if(age >= 8850){
+        if(Utils::tirage(10)){ // esperance +ou- 5 mois en moyenne
+            kill(1);
+            return true;
+        }
     }
     return false;
 }
@@ -46,9 +49,28 @@ void Eagle::marry(Eagle *newMate) {
     mate = newMate;
 }
 
-void Eagle::getPregnant(Animal *mate) {
+void Eagle::getPregnant(Animal *withMate) {
     pregnancy = 1; // first day
-    marry(dynamic_cast<Eagle *>(mate)); // je vous déclare aigle...
-    (dynamic_cast<Eagle *>(mate))->marry(this); // ...et aiguillette?
+    cout << name << " seems to like " << withMate->getName() << endl;
+    marry(dynamic_cast<Eagle *>(withMate)); // je vous déclare aigle...
+    (dynamic_cast<Eagle *>(withMate))->marry(this); // ...et aiguillette?
+}
+
+bool Eagle::birthDay(int date) {
+    if (pregnancy > 1){ // already have eggs
+        pregnancy ++;
+        if (pregnancy == 45){
+            pregnancy = 0;
+            return true;
+        }
+        if (sick || hungry){ // its ok the first and the last day
+            pregnancy = 0;
+            cout << name << "'s eggs are wasted" << endl;
+        }
+    }
+    if (pregnancy == 1 && date%360 >= 60 && date%360 <= 90){ // spawn eggs
+        pregnancy ++;
+    }
+    return false;
 }
 

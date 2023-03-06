@@ -19,7 +19,9 @@ public:
 
     void marry(Eagle* newMate);
 
-    void getPregnant(Animal *mate) override;
+    void getPregnant(Animal *withMate) override;
+
+    bool birthDay(int date) override;
 };
 
 

@@ -8,7 +8,7 @@ using namespace std;
 
 
 class ChickenCoop : public Habitat{
-    int Eggs{};
+    int eggs= 0;
 
 public:
     void show() override;
@@ -18,6 +18,8 @@ public:
     pair<int, int> receive(Animal *newAnimal) override;
 
     void checkOverCrowding() override;
+
+    void dailyRoutine(int date) override;
 };
 
 

@@ -18,6 +18,9 @@ public:
     bool isSexuallyPredisposed() override;
 
     void getPregnant(Animal *mate) override;
+
+    bool birthDay(int date) override;
+
 };
 
 

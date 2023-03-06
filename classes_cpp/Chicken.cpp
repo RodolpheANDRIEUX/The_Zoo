@@ -1,5 +1,6 @@
 #include <random>
 #include "../headers/Chicken.h"
+#include "../headers/Utils.h"
 
 void Chicken::show() {
     cout << name << "(" << ((age/30 <= 6) ? "baby " : "") << ((female) ? "hen) - " : "rooster) - ");
@@ -27,9 +28,11 @@ void Chicken::getSick() {
 
 bool Chicken::getOld() {
     age++;
-    if(age >= 5400){
-        this->kill(1);
-        return true;
+    if(age >= 5340){
+        if(Utils::tirage(25)){ // esperance +ou- 2 mois en moyenne
+            kill(1);
+            return true;
+        }
     }
     return false;
 }
@@ -44,4 +47,20 @@ bool Chicken::isSexuallyPredisposed() {
 
 void Chicken::getPregnant(Animal *mate) {
     pregnancy = 1;
+    cout << name << " seems to be sitting on eggs" << endl;
+}
+
+bool Chicken::birthDay(int date) {
+    if (pregnancy > 0){
+        pregnancy ++;
+        if (pregnancy == 42){
+            pregnancy = 0;
+            return true;
+        }
+        if (sick || hungry){ // its ok if its the last day... cmon!
+            pregnancy = 0;
+            cout << name << "'s eggs are not covered anymore..." << endl;
+        }
+    }
+    return false;
 }

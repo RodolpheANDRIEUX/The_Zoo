@@ -19,6 +19,8 @@ public:
     pair<int, int> receive(Animal *newAnimal) override;
 
     void checkOverCrowding() override;
+
+    void dailyRoutine(int date) override;
 };
 
 
