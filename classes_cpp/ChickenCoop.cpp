@@ -26,7 +26,7 @@ pair<int, int> ChickenCoop::receive(Animal *newAnimal) {
 
 void ChickenCoop::checkOverCrowding() {
     if (Animals.size() > 10){
-        if (Utils::tirage(20)){
+        if (Utils::tirage(200)){
             Animals[0]->kill(4);
             Animals.erase(Animals.begin());
             return;
