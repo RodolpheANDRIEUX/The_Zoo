@@ -28,6 +28,9 @@ void Chicken::getSick() {
 
 bool Chicken::getOld() {
     age++;
+    if (shyCoolDown > 0 ){
+        shyCoolDown--;
+    }
     if(age >= 5340){
         if(Utils::tirage(25)){ // esperance +ou- 2 mois en moyenne
             kill(1);
@@ -53,7 +56,7 @@ void Chicken::getPregnant(Animal *mate) {
 bool Chicken::birthDay(int date) {
     if (pregnancy > 0){
         pregnancy ++;
-        if (pregnancy == 42){
+        if (pregnancy >= 42){
             pregnancy = 0;
             return true;
         }

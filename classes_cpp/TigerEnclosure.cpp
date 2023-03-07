@@ -44,25 +44,31 @@ void TigerEnclosure::checkOverCrowding() {
 }
 
 void TigerEnclosure::dailyRoutine(int date) {
-//    for (auto tiger = Animals.begin(); tiger != Animals.end(); tiger++){
-//
-//        //sick
-//        //(*tiger)->getSick();
-//
-//        // birth
-//        if ((*tiger)->birthDay(date)){
-//            for (int j = 0 ; j < 3 ; j++){
-//                if (Utils::tirage(2000)){ // = 2 chance sur 3
-//                    Animals.push_back(new Tiger("Baby tiger", 0, Utils::tirage(1500))); // 1/2 chance male/female
-//                    cout << "A baby tiger is born!\n You should put him in a new habitat with his mother." << endl;
-//                }
-//            }
-//            (*tiger)->getsShy(510);
-//        }
-//
-//        //old
-//        if((*tiger)->getOld()){
-//            Animals.erase(tiger);
-//        }
-//    }
+    int nbAnimal = int(Animals.size());
+    for (int i = 0; i < nbAnimal; i++) {
+        Animal *tiger = Animals[i];
+
+        //sick
+        //tiger->getSick();
+
+        // birth
+        if (tiger->birthDay(date)) {
+            for (int j = 0; j < 3; j++) {
+                if (Utils::tirage(2000)) { // = 2 chance sur 3
+                    Animals.push_back(new Tiger("Baby tiger", 0, Utils::tirage(1500))); // 1/2 chance male/female
+                    cout << "A baby tiger is born!\n You should put him in a new habitat with his mother." << endl;
+                }
+            }
+            tiger->getsShy(510);
+        }
+
+        // old
+        if (tiger->getOld()) {
+            Animals.erase(Animals.begin() + i);
+            i--; // update iterator
+            nbAnimal--;
+        }
+
+
+    }
 }
