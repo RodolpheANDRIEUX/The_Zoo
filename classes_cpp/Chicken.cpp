@@ -8,16 +8,12 @@ void Chicken::show() {
     cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sick || hungry)? "     /!\\" : "") << endl;
 }
 
-void Chicken::getSick() {
+void Chicken::handleSickness() {
     if(!sick) {
-        random_device rd;
-        mt19937 gen(rd());
+        bool random = Utils::tirage(10);
 
-        std::uniform_int_distribution<> dis(0, 360);
-
-        int random = dis(gen);
-        if(random < 18) {
-            cout << name << "is sick" << endl;
+        if(random) {
+            cout << "*" << name << " is sick*" << endl;
             sick = true;
             sickCoolDown = 5;
         }
@@ -29,7 +25,7 @@ void Chicken::getSick() {
     }
 }
 
-bool Chicken::getOld() {
+bool Chicken::getOlder() {
     age++;
     if(age >= 5340){
         if(Utils::tirage(25)){ // esperance +ou- 2 mois en moyenne

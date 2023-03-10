@@ -31,9 +31,9 @@ public:
 
     bool everythingok() const;
 
-    virtual bool getOld() = 0;
+    virtual bool getOlder() = 0;
 
-    virtual void getSick() = 0;
+    virtual void handleSickness() = 0;
 
     virtual void getPregnant(Animal* mate) = 0;
 

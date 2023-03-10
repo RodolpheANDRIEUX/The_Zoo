@@ -12,24 +12,22 @@ void Tiger::show() {
     cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sick || hungry)? "     /!\\" : "") << endl;
 }
 
-void Tiger::getSick() {
+void Tiger::handleSickness() {
     if(!sick) {
-        int random = Utils::getRandomNumber();
+        bool random = Utils::tirage(2.5);
 
-        if(random < 300) {
-            cout << "*" << name << " is sick*" << endl;
+        if(random) {
             sick = true;
             sickCoolDown = 15;
         }
     } else if(sickCoolDown <= 0) {
-        cout << "*" << name << " is neat*" << endl;
         sick = false;
     } else {
         sickCoolDown--;
     }
 }
 
-bool Tiger::getOld() {
+bool Tiger::getOlder() {
     age++;
     if(age >= 8850){
         if(Utils::tirage(10)){ // esperance +ou- 5 mois en moyenne

@@ -61,7 +61,7 @@ void TigerEnclosure::dailyRoutine(int date) {
 //        }
 //
 //        //old
-//        if((*tiger)->getOld()){
+//        if((*tiger)->getOlder()){
 //            Animals.erase(tiger);
 //        }
 //    }

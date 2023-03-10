@@ -8,24 +8,22 @@ void Eagle::show() {
     cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sick || hungry)? "     /!\\" : "") << endl;
 }
 
-void Eagle::getSick() {
+void Eagle::handleSickness() {
     if(!sick) {
-        int random = Utils::getRandomNumber();
+        bool random = Utils::tirage(0.8);
 
-        if(random < 100) {
-            cout << "*" << name << " is sick*" << endl;
+        if(random) {
             sick = true;
             sickCoolDown = 30;
         }
     } else if(sickCoolDown <= 0) {
-        cout << "*" << name << " is neat*" << endl;
         sick = false;
     } else {
         sickCoolDown--;
     }
 }
 
-bool Eagle::getOld() {
+bool Eagle::getOlder() {
     age++;
     if(age >= 8850){
         if(Utils::tirage(10)){ // esperance +ou- 5 mois en moyenne
