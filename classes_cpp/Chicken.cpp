@@ -5,23 +5,27 @@
 void Chicken::show() {
     cout << name << "(" << ((age/30 <= 6) ? "baby " : "") << ((female) ? "hen) - " : "rooster) - ");
     cout << ((age/30 <= 12) ? to_string(age/30) + " month old (" + to_string(age) + " days) ": to_string(age/360) + "years old (" + to_string(age) + " days) ");
-    cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sick || hungry)? "     /!\\" : "") << endl;
+    cout << ((sickCoolDown > 0)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sickCoolDown > 0 || hungry)? "     /!\\" : "") << endl;
 }
 
 void Chicken::handleSickness() {
-    if(!sick) {
-        bool random = Utils::tirage(10);
+    if(sickCoolDown <= 0) {
+        bool random = Utils::tirage(1);
+        bool random2 = Utils::tirage(1);
 
-        if(random) {
+        if(random && random2) {
             cout << "*" << name << " is sick*" << endl;
-            sick = true;
             sickCoolDown = 5;
         }
-    } else if(sickCoolDown <= 0) {
-        cout << "*" << name << " is neat*" << endl;
-        sick = false;
-    } else {
-        sickCoolDown--;
+    } else if(sickCoolDown >= 4) {
+         bool random = Utils::tirage(5);
+         if(random) {
+             sickCoolDown++;
+         }
+         if(sickCoolDown <= 0) {
+             cout << "*" << name << " is neat*" << endl;
+         }
+         sickCoolDown--;
     }
 }
 
