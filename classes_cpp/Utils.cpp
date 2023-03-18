@@ -13,3 +13,10 @@ bool Utils::tirage(int probaPerMonth) { // probability per month in % (ex: 1% pe
     }
     return false;
 }
+
+int Utils::randomInt(int max) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dis(0, max);
+    return dis(gen);
+}

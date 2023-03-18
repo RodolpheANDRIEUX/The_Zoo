@@ -319,11 +319,19 @@ void Zoo::nextDay() {
 //        grains -= habitat->grainsConsomation();
     }
 
-    // TODO EventFire
+    eventFire();
 
     // TODO EventRob
 
     // TODO EventPests
 
     // TODO EventSpoiledMeats
+}
+
+void Zoo::eventFire() {
+    if(Utils::tirage(1)) {
+        int random = Utils::randomInt(int(habitats.size()));
+        cout << "Un des habitats a pris feu dans la nuit." << endl;
+        habitats.erase(habitats.begin() + random);
+    }
 }

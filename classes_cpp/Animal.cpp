@@ -40,11 +40,3 @@ bool Animal::everythingok() const {
 void Animal::getsShy(int i) {
     shyCoolDown = i;
 }
-
-void Animal::handleSickness() {
-    if(sick) {
-
-    } else {
-
-    }
-}
