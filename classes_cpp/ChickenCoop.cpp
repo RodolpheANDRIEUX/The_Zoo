@@ -5,7 +5,7 @@
 #include "../headers/Utils.h"
 
 void ChickenCoop::show() {
-    cout << "** CHICKEN COOP **" << endl;
+    cout << "** CHICKEN COOP **" << ((overCrowded) ? "yes" : "no") << endl;
     if (Animals.empty()){
         cout << "10 available places" << endl;
         return;
@@ -26,7 +26,7 @@ pair<int, int> ChickenCoop::receive(Animal *newAnimal) {
 
 void ChickenCoop::checkOverCrowding() {
     if (Animals.size() > 10){
-        if (Utils::tirage(20)){
+        if (Utils::tirage(200)){
             Animals[0]->kill(4);
             Animals.erase(Animals.begin());
             return;
@@ -67,6 +67,7 @@ void ChickenCoop::dailyRoutine(int date) {
         if(chicken->getOlder()){
             Animals.erase(Animals.begin() + i);
             i--;
+            nbAnimal--;
         }
     }
 }

@@ -51,8 +51,19 @@ void EagleAviary::dailyRoutine(int date) {
 //        }
 //
 //        //old
-//        if((*eagle)->getOlder()){
+//        if((*eagle)->getOld()){
 //            Animals.erase(eagle);
 //        }
 //    }
+}
+
+        // old
+        if (eagle->getOld()) {
+            Animals.erase(Animals.begin() + i);
+            i--; // update iterator
+            nbAnimal--;
+        }
+
+
+    }
 }

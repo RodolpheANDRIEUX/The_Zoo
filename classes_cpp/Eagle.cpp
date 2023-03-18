@@ -25,6 +25,9 @@ void Eagle::handleSickness() {
 
 bool Eagle::getOlder() {
     age++;
+    if (shyCoolDown > 0 ){
+        shyCoolDown--;
+    }
     if(age >= 8850){
         if(Utils::tirage(10)){ // esperance +ou- 5 mois en moyenne
             kill(1);
