@@ -19,6 +19,10 @@ public:
     void getPregnant(Animal *mate) override;
 
     bool birthDay(int date) override;
+
+    double eatMeat();
+
+    double eatGrains();
 };
 
 

@@ -69,5 +69,14 @@ bool Tiger::birthDay(int date) {
     return false;
 }
 
+double Tiger::eatMeat() {
+    if(!female) {
+        return 12;
+    } else {
+        return 10;
+    }
+}
 
-
+double Tiger::eatGrains() {
+    return 0;
+}

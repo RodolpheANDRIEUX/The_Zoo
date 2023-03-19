@@ -49,7 +49,7 @@ void TigerEnclosure::dailyRoutine(int date) {
         Animal *tiger = Animals[i];
 
         //sick
-        //tiger->getSick();
+        tiger->handleSickness();
 
         // birth
         if (tiger->birthDay(date)) {

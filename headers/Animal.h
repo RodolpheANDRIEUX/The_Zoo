@@ -42,6 +42,10 @@ public:
     void getsShy(int i);
 
     virtual bool birthDay(int date) = 0;
+
+    virtual double eatMeat() = 0;
+
+    virtual double eatGrains() = 0;
 };
 
 

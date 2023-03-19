@@ -318,8 +318,8 @@ void Zoo::nextDay() {
         habitat->checkReproductions();
         habitat->dailyRoutine(Days); // sickness, birth and old
 //        money += habitat->countIncomes(Days);
-//        steaks -= habitat->meatConsomation();    // TODO Eat
-//        grains -= habitat->grainsConsomation();
+        steaks -= habitat->meatConsomation();
+        grains -= habitat->grainsConsomation();
     }
 
     eventFire();

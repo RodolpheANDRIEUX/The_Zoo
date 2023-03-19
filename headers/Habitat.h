@@ -29,6 +29,10 @@ public:
     virtual void dailyRoutine(int date) = 0;
 
     void steal();
+
+    double meatConsomation();
+
+    double grainsConsomation();
 };
 
 

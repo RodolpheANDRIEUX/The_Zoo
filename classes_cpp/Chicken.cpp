@@ -70,3 +70,15 @@ bool Chicken::birthDay(int date) {
     }
     return false;
 }
+
+double Chicken::eatGrains() {
+    if(!female) {
+        return 0.15;
+    } else {
+        return 0.18;
+    }
+}
+
+double Chicken::eatMeat() {
+    return 0;
+}

@@ -74,3 +74,14 @@ bool Eagle::birthDay(int date) {
     return false;
 }
 
+double Eagle::eatMeat() {
+    if(!female) {
+        return 0.25;
+    } else {
+        return 0.3;
+    }
+}
+
+double Eagle::eatGrains() {
+    return 0;
+}

@@ -43,3 +43,19 @@ void Habitat::steal() {
         Animals.erase(Animals.begin() + animal);
     }
 }
+
+double Habitat::meatConsomation() {
+    double totalConsomation = 0;
+    for (int i = 0; i < getNbAnimals(); i++) {
+        totalConsomation += Animals[i]->eatMeat();
+    }
+    return totalConsomation;
+}
+
+double Habitat::grainsConsomation() {
+    double totalConsomation = 0;
+    for (int i = 0; i < getNbAnimals(); i++) {
+        totalConsomation += Animals[i]->eatGrains();
+    }
+    return totalConsomation;
+}

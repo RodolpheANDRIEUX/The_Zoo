@@ -40,7 +40,7 @@ void EagleAviary::dailyRoutine(int date) {
         Animal* eagle = Animals[i];
 
         //sick
-        //(*eagle)->getSick();
+        eagle->handleSickness();
 
         // birth
         if (eagle->birthDay(date)){

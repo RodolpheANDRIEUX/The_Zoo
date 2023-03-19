@@ -21,6 +21,9 @@ public:
 
     bool birthDay(int date) override;
 
+    double eatMeat();
+
+    double eatGrains();
 };
 
 
