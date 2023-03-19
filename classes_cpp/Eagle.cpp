@@ -5,21 +5,15 @@
 void Eagle::show() {
     cout << name << "(" << ((female) ? ((pregnancy > 0) ? "Female) - Pregnant, " : "Female) - ") : "Male) - ");
     cout << ((age/30 <= 6) ? "baby eagle " : "") << ((age/30 <= 12) ? to_string(age/30) + " month old (" + to_string(age) + " days) ": to_string(age/360) + "years old (" + to_string(age) + " days) ");
-    cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sick || hungry)? "     /!\\" : "") << endl;
+    cout << ((sickCoolDown > 0)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sickCoolDown > 0 || hungry)? "     /!\\" : "") << endl;
 }
 
 void Eagle::handleSickness() {
-    if(!sick) {
-        bool random = Utils::tirage(0.8);
-
-        if(random) {
-            sick = true;
-            sickCoolDown = 30;
-        }
-    } else if(sickCoolDown <= 0) {
-        sick = false;
-    } else {
+    if(sickCoolDown > 0 && Utils::tirage(2400)){
         sickCoolDown--;
+    }
+    if(Utils::tirage(833) && Utils::tirage(3)) {
+        sickCoolDown = 24;
     }
 }
 
@@ -63,7 +57,7 @@ bool Eagle::birthDay(int date) {
             pregnancy = 0;
             return true;
         }
-        if (sick || hungry){ // its ok the first and the last day
+        if (sickCoolDown > 0 || hungry){ // its ok the first and the last day
             pregnancy = 0;
             cout << name << "'s eggs are wasted" << endl;
         }
@@ -74,14 +68,36 @@ bool Eagle::birthDay(int date) {
     return false;
 }
 
-double Eagle::eatMeat() {
-    if(!female) {
-        return 0.25;
-    } else {
-        return 0.3;
+double Eagle::eatMeat(double meat) {
+    if (meat == 0){
+        hungerCoolDown++;
+        if (hungerCoolDown > 10){
+            hungry = true;
+        }
+        if (hungerCoolDown > 25){
+            kill(5);
+            return -1;
+        }
+        return 0;
     }
+
+    double consumption;
+    if(!female) {
+        consumption = 0.25;
+    } else if(pregnancy > 0) {
+        consumption =  0.6;
+    } else {
+        consumption =  0.3;
+    }
+    if(consumption > meat){
+        cout << "There is no meat left /!\\" << endl;
+        return meat;
+    }
+    hungry = false;
+    hungerCoolDown = 0;
+    return consumption;
 }
 
-double Eagle::eatGrains() {
+double Eagle::eatGrains(double grains) {
     return 0;
 }

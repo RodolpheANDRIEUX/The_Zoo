@@ -1,7 +1,3 @@
-//
-// Created by rodol on 23/02/2023.
-//
-
 #include <random>
 #include "../headers/Tiger.h"
 #include "../headers/Utils.h"
@@ -9,21 +5,16 @@
 void Tiger::show() {
     cout << name << "(" << ((female) ? ((pregnancy > 0) ? "Female) - Pregnant, " : "Female) - ") : "Male) - ");
     cout << ((age/30 <= 6) ? "baby tiger " : "") << ((age/30 <= 12) ? to_string(age/30) + " month old (" + to_string(age) + " days) ": to_string(age/360) + "years old (" + to_string(age) + " days) ");
-    cout << ((sick)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sick || hungry)? "     /!\\" : "") << endl;
+    cout << ((sickCoolDown > 0)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sickCoolDown > 0 || hungry)? "     /!\\" : "") << endl;
 }
 
 void Tiger::handleSickness() {
-    if(!sick) {
-        bool random = Utils::tirage(2.5);
-
-        if(random) {
-            sick = true;
-            sickCoolDown = 15;
-        }
-    } else if(sickCoolDown <= 0) {
-        sick = false;
-    } else {
+    if(sickCoolDown > 0 && Utils::tirage(2400)){
         sickCoolDown--;
+        return;
+    }
+    if(Utils::tirage(25) && Utils::tirage(300)) {
+        sickCoolDown = 12;
     }
 }
 
@@ -61,7 +52,7 @@ bool Tiger::birthDay(int date) {
             pregnancy = 0;
             return true;
         }
-        if (sick || hungry){ // its ok if its the last day... cmon!
+        if (sickCoolDown > 0 || hungry){ // its ok if its the last day... cmon!
             pregnancy = 0;
             cout << name << " lost the baby" << endl;
         }
@@ -69,14 +60,36 @@ bool Tiger::birthDay(int date) {
     return false;
 }
 
-double Tiger::eatMeat() {
-    if(!female) {
-        return 12;
-    } else {
-        return 10;
+double Tiger::eatMeat(double meat) {
+    if (meat == 0){
+        hungerCoolDown++;
+        if (hungerCoolDown > 2){
+            hungry = true;
+        }
+        if (hungerCoolDown > 20){
+            kill(5);
+            return -1;
+        }
+        return 0;
     }
+
+    double consumption;
+    if(!female) {
+        consumption = 12;
+    } else if(pregnancy > 0) {
+        consumption =  20;
+    } else {
+        consumption =  10;
+    }
+    if(consumption > meat){
+        cout << "There is no meat left /!\\" << endl;
+        return meat;
+    }
+    hungry = false;
+    hungerCoolDown = 0;
+    return consumption;
 }
 
-double Tiger::eatGrains() {
+double Tiger::eatGrains(double grains) {
     return 0;
 }

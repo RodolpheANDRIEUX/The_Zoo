@@ -14,9 +14,9 @@ protected:
     int pregnancy = 0;
     string name;
     int age; // days
-    bool sick = false;
-    int sickCoolDown;
+    int sickCoolDown = 0;
     bool hungry = false;
+    int hungerCoolDown = 0;
 
 public:
     Animal(string name, int age, bool female) : name(std::move(name)), age(age), female(female){}
@@ -43,9 +43,9 @@ public:
 
     virtual bool birthDay(int date) = 0;
 
-    virtual double eatMeat() = 0;
+    virtual double eatMeat(double meat) = 0;
 
-    virtual double eatGrains() = 0;
+    virtual double eatGrains(double grains) = 0;
 };
 
 

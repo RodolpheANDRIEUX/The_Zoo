@@ -33,29 +33,37 @@ void Habitat::checkReproductions() {
 
 void Habitat::steal() {
     if(getNbAnimals() == 0) {
-        cout << "Thieves broke into the zoo but found no animals." << endl;
+        cout << "Some thieves broke into the zoo but found no animals." << endl;
     } else {
         int animal = Utils::randomInt(getNbAnimals()-1);
         if(Animals[animal] == nullptr) {
             return;
         }
-        cout << "Thieves stolen an animal." << endl;
+        Animals[animal]->kill(6);
         Animals.erase(Animals.begin() + animal);
     }
 }
 
-double Habitat::meatConsomation() {
-    double totalConsomation = 0;
+double Habitat::meatConsumption(double meat) {
     for (int i = 0; i < getNbAnimals(); i++) {
-        totalConsomation += Animals[i]->eatMeat();
+        double conso = Animals[i]->eatMeat(meat);
+        if (conso == -1){
+            Animals.erase(Animals.begin() + i);
+        } else {
+            meat -= conso;
+        }
     }
-    return totalConsomation;
+    return meat;
 }
 
-double Habitat::grainsConsomation() {
-    double totalConsomation = 0;
+double Habitat::grainsConsumption(double grains) {
     for (int i = 0; i < getNbAnimals(); i++) {
-        totalConsomation += Animals[i]->eatGrains();
+        double conso = Animals[i]->eatGrains(grains);
+        if (conso == -1){
+            Animals.erase(Animals.begin() + i);
+        } else {
+            grains -= conso;
+        }
     }
-    return totalConsomation;
+    return grains;
 }

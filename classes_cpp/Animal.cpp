@@ -23,6 +23,12 @@ void Animal::kill(int deathCode) {
         case 4:
             cout << "*" << name << " died from overcrowding in his habitat*" << endl;
             break;
+        case 5:
+            cout << "*" << name << " starved to death*" << endl;
+            break;
+        case 6:
+            cout << "The thieves have stolen " << name << endl;
+            break;
         default:
             cout << "*" << name << " died*" << endl;
             break;
@@ -31,7 +37,7 @@ void Animal::kill(int deathCode) {
 }
 
 bool Animal::everythingok() const {
-    if (hungry || sick){
+    if (hungry || (sickCoolDown > 0)){
         return false;
     }
     return true;

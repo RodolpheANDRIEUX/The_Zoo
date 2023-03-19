@@ -17,8 +17,8 @@ class Zoo {
     double money = 80000;
     vector<Habitat*> habitats;
     int Days = 0;
-    double steaks = 760;
-    double grains = 51;
+    double steaks = 985.5;
+    double grains = 72.9;
 
 public:
     explicit Zoo(string name) : name(std::move(name)){

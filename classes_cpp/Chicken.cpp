@@ -1,6 +1,5 @@
 #include <random>
 #include "../headers/Chicken.h"
-#include "../headers/Utils.h"
 
 void Chicken::show() {
     cout << name << "(" << ((age/30 <= 6) ? "baby " : "") << ((female) ? "hen) - " : "rooster) - ");
@@ -9,23 +8,11 @@ void Chicken::show() {
 }
 
 void Chicken::handleSickness() {
-    if(sickCoolDown <= 0) {
-        bool random = Utils::tirage(1);
-        bool random2 = Utils::tirage(1);
-
-        if(random && random2) {
-            cout << "*" << name << " is sick*" << endl;
-            sickCoolDown = 5;
-        }
-    } else if(sickCoolDown >= 4) {
-         bool random = Utils::tirage(5);
-         if(random) {
-             sickCoolDown++;
-         }
-         if(sickCoolDown <= 0) {
-             cout << "*" << name << " is neat*" << endl;
-         }
-         sickCoolDown--;
+    if(sickCoolDown > 0 && Utils::tirage(2400)){
+        sickCoolDown--;
+    }
+    if(Utils::tirage(10) && Utils::tirage(125)) {
+        sickCoolDown = 4;
     }
 }
 
@@ -71,14 +58,36 @@ bool Chicken::birthDay(int date) {
     return false;
 }
 
-double Chicken::eatGrains() {
-    if(!female) {
-        return 0.15;
-    } else {
-        return 0.18;
+double Chicken::eatGrains(double grains) {
+    if (grains == 0){
+        hungerCoolDown++;
+        if (hungerCoolDown > ((female) ? 1 : 2)){
+            hungry = true;
+        }
+        if (hungerCoolDown > 5){
+            kill(5);
+            return -1;
+        }
+        return 0;
     }
+
+    double consumption;
+    if(!female) {
+        consumption = 0.18;
+    } else if(pregnancy > 0) {
+        consumption =  0.3;
+    } else {
+        consumption =  0.15;
+    }
+    if(consumption > grains){
+        cout << "There is no grains left /!\\" << endl;
+        return grains;
+    }
+    hungry = false;
+    hungerCoolDown = 0;
+    return consumption;
 }
 
-double Chicken::eatMeat() {
+double Chicken::eatMeat(double meat) {
     return 0;
 }

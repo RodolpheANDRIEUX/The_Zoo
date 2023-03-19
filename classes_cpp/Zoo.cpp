@@ -211,7 +211,7 @@ void Zoo::show() {
             return;
         }
 
-        cout << "\n**** YOUR ZOO ****" << endl;
+        cout << "\n**** YOUR ZOO ****                  Meat: " << steaks << "kg     Grains: " << grains << "kg" << endl;
         for (int i = 0; i < habitats.size(); i++){           // lists all habitats
             int nbA = habitats[i]->getNbAnimals();
             bool ping = habitats[i]->checkHabitat();
@@ -284,20 +284,17 @@ void Zoo::customMenu() {
     string userInput;
     int Input;
 
-    do {
+    do{
         cout << "How much days to skip ?" << endl;
         string strInput;
         cin >> strInput;
-        Input = stoi(strInput) ;
-        switch(Input)
-        {
-            case 0:
-                break;
-            default:
-                passTime(Input);
-                return;
+        try {
+            Input = stoi(strInput);
+        } catch (...) {
+            Input = 0;
         }
-    } while (Input != 0);
+    } while (Input < 1);
+    passTime(Input);
 }
 
 void Zoo::passTime(size_t nbDays) {
@@ -307,7 +304,6 @@ void Zoo::passTime(size_t nbDays) {
 };
 
 void Zoo::nextDay() {
-
     Days++;
 
     for(auto & habitat : habitats) { // apply to every habitat
@@ -318,8 +314,8 @@ void Zoo::nextDay() {
         habitat->checkReproductions();
         habitat->dailyRoutine(Days); // sickness, birth and old
 //        money += habitat->countIncomes(Days);
-        steaks -= habitat->meatConsomation();
-        grains -= habitat->grainsConsomation();
+        steaks = habitat->meatConsumption(steaks);
+        grains = habitat->grainsConsumption(grains);
     }
 
     eventFire();
@@ -333,12 +329,9 @@ void Zoo::nextDay() {
 
 void Zoo::eventFire() {
     if(!habitats.empty()) {
-        if(Utils::tirage(1)) {
+        if(!habitats.empty() && Utils::tirage(1)) {
             int random = Utils::randomInt(int(habitats.size())-1);
-            if(habitats[random] == nullptr) {
-                return;
-            }
-            cout << "An enclosure burned during the night." << endl;
+            cout << "An enclosure burned during the night" << ((habitats[random]->getNbAnimals() > 0) ? ", everyone is dead" : "") << endl;
             habitats.erase(habitats.begin() + random);
         }
     }

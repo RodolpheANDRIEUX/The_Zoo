@@ -30,9 +30,9 @@ public:
 
     void steal();
 
-    double meatConsomation();
+    double meatConsumption(double meat);
 
-    double grainsConsomation();
+    double grainsConsumption(double grains);
 };
 
 

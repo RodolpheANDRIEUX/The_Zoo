@@ -20,9 +20,9 @@ public:
 
     bool birthDay(int date) override;
 
-    double eatMeat();
+    double eatMeat(double meat);
 
-    double eatGrains();
+    double eatGrains(double grains);
 };
 
 
