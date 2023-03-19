@@ -332,13 +332,13 @@ void Zoo::nextDay() {
 }
 
 void Zoo::eventFire() {
-    if(Utils::tirage(1)) {
-        if(!(habitats.empty())) {
+    if(!habitats.empty()) {
+        if(Utils::tirage(1)) {
             int random = Utils::randomInt(int(habitats.size())-1);
             if(habitats[random] == nullptr) {
                 return;
             }
-            cout << "Un des habitats a pris feu dans la nuit." << endl;
+            cout << "An enclosure burned during the night." << endl;
             habitats.erase(habitats.begin() + random);
         }
     }

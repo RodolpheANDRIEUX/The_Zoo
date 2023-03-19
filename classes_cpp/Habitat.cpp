@@ -33,13 +33,13 @@ void Habitat::checkReproductions() {
 
 void Habitat::steal() {
     if(getNbAnimals() == 0) {
-        cout << "Des voleurs sont rentrées dans le zoo mais n'ont pas trouvé d'animaux." << endl;
+        cout << "Thieves broke into the zoo but found no animals." << endl;
     } else {
         int animal = Utils::randomInt(getNbAnimals()-1);
         if(Animals[animal] == nullptr) {
             return;
         }
-        cout << "Des voleurs ont emportés un animal !" << endl;
+        cout << "Thieves stolen an animal." << endl;
         Animals.erase(Animals.begin() + animal);
     }
 }
