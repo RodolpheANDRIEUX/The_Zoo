@@ -32,9 +32,9 @@ bool Chicken::getOlder() {
 
 bool Chicken::isSexuallyPredisposed() {
     if (female) { // for female
-        return age >= 180 && age <= 2880 && pregnancy == 0 && shyCoolDown == 0;
+        return age >= 180 && age <= 2880 && pregnancy == 0 && shyCoolDown == 0 && sickCoolDown == 0 && !hungry;
     } else { // for male
-        return age >= 180 && age <= 2880 && shyCoolDown == 0;
+        return age >= 180 && age <= 2880 && shyCoolDown == 0 && sickCoolDown == 0 && !hungry;
     }
 }
 
@@ -50,7 +50,7 @@ bool Chicken::birthDay(int date) {
             pregnancy = 0;
             return true;
         }
-        if (sick || hungry){ // its ok if its the last day... cmon!
+        if (sickCoolDown > 0 || hungry){ // its ok if its the last day... cmon!
             pregnancy = 0;
             cout << name << "'s eggs are not covered anymore..." << endl;
         }

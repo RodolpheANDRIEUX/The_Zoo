@@ -34,9 +34,9 @@ bool Tiger::getOlder() {
 
 bool Tiger::isSexuallyPredisposed() {
     if (female) { // for female
-        return age >= 1440 && age <= 5040 && pregnancy == 0 && shyCoolDown == 0;
+        return age >= 1440 && age <= 5040 && pregnancy == 0 && shyCoolDown == 0 && sickCoolDown == 0 && !hungry;
     } else { // for male
-        return age >= 2160 && age <= 5040 && shyCoolDown == 0;
+        return age >= 2160 && age <= 5040 && shyCoolDown == 0 && sickCoolDown == 0 && !hungry;
     }
 }
 
