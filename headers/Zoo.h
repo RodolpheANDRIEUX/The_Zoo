@@ -70,6 +70,10 @@ public:
     void eventFire();
 
     void eventRob();
+
+    void eventPests();
+
+    void eventSpoiledMeats();
 };
 
 

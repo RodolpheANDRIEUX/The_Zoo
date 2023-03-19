@@ -326,9 +326,9 @@ void Zoo::nextDay() {
 
     eventRob();
 
-    // TODO EventPests
+    eventPests();
 
-    // TODO EventSpoiledMeats
+    eventSpoiledMeats();
 }
 
 void Zoo::eventFire() {
@@ -348,5 +348,19 @@ void Zoo::eventRob() {
     if(Utils::tirage(1)) {
         int habitat = Utils::randomInt(int(habitats.size())-1);
         habitats[habitat]->steal();
+    }
+}
+
+void Zoo::eventPests() {
+    if(Utils::tirage(20)) {
+        cout << "Rats ate in our grains stock." << endl;
+        grains *= 0.9;
+    }
+}
+
+void Zoo::eventSpoiledMeats() {
+    if(Utils::tirage(10)) {
+        cout << "Spoiled meats." << endl;
+        steaks *= 0.8;
     }
 }
