@@ -27,6 +27,8 @@ public:
     virtual void checkOverCrowding() = 0;
 
     virtual void dailyRoutine(int date) = 0;
+
+    void steal();
 };
 
 

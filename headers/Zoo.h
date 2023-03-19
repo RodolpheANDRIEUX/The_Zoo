@@ -68,7 +68,10 @@ public:
     void nextDay();
 
     void eventFire();
+
+    void eventRob();
 };
+
 
 
 #endif //UNTITLED1_ZOO_H

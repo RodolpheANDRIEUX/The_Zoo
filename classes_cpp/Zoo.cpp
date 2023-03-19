@@ -311,6 +311,9 @@ void Zoo::nextDay() {
     Days++;
 
     for(auto & habitat : habitats) { // apply to every habitat
+        if(habitat == nullptr) {
+            continue;
+        }
         habitat->checkOverCrowding();
         habitat->checkReproductions();
         habitat->dailyRoutine(Days); // sickness, birth and old
@@ -321,7 +324,7 @@ void Zoo::nextDay() {
 
     eventFire();
 
-    // TODO EventRob
+    eventRob();
 
     // TODO EventPests
 
@@ -330,8 +333,20 @@ void Zoo::nextDay() {
 
 void Zoo::eventFire() {
     if(Utils::tirage(1)) {
-        int random = Utils::randomInt(int(habitats.size()));
-        cout << "Un des habitats a pris feu dans la nuit." << endl;
-        habitats.erase(habitats.begin() + random);
+        if(!(habitats.empty())) {
+            int random = Utils::randomInt(int(habitats.size())-1);
+            if(habitats[random] == nullptr) {
+                return;
+            }
+            cout << "Un des habitats a pris feu dans la nuit." << endl;
+            habitats.erase(habitats.begin() + random);
+        }
+    }
+}
+
+void Zoo::eventRob() {
+    if(Utils::tirage(1)) {
+        int habitat = Utils::randomInt(int(habitats.size())-1);
+        habitats[habitat]->steal();
     }
 }

@@ -1,5 +1,6 @@
 #include <algorithm>
 #include "../headers/Habitat.h"
+#include "../headers/Utils.h"
 
 int Habitat::getNbAnimals() const {
     return int(Animals.size());
@@ -27,5 +28,18 @@ void Habitat::checkReproductions() {
                 }
             }
         }
+    }
+}
+
+void Habitat::steal() {
+    if(getNbAnimals() == 0) {
+        cout << "Des voleurs sont rentrées dans le zoo mais n'ont pas trouvé d'animaux." << endl;
+    } else {
+        int animal = Utils::randomInt(getNbAnimals()-1);
+        if(Animals[animal] == nullptr) {
+            return;
+        }
+        cout << "Des voleurs ont emportés un animal !" << endl;
+        Animals.erase(Animals.begin() + animal);
     }
 }
