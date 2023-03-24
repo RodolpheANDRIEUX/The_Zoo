@@ -73,7 +73,6 @@ void ChickenCoop::dailyRoutine(int date) {
 }
 
 int ChickenCoop::sell() {
-    delete this;
     return 50;
 }
 

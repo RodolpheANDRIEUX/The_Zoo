@@ -32,7 +32,9 @@ public:
 
     virtual string getType() = 0;
 
-    int sellAnimal();
+    int sellOneAnimal();
+
+    int sellAllAnimal();
 
     void steal();
 

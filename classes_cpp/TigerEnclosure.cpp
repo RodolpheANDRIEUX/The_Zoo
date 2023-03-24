@@ -74,7 +74,6 @@ void TigerEnclosure::dailyRoutine(int date) {
 }
 
 int TigerEnclosure::sell() {
-    delete this;
     return 500;
 }
 

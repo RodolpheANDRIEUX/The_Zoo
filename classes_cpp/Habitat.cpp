@@ -31,7 +31,7 @@ void Habitat::checkReproductions() {
     }
 }
 
-int Habitat::sellAnimal() {
+int Habitat::sellOneAnimal() {
     string userInput;
     int Input;
 
@@ -62,6 +62,16 @@ int Habitat::sellAnimal() {
         }
     } while (Input != 0);
     return -2;
+}
+
+int Habitat::sellAllAnimal() {
+    int price = 0;
+    while(!Animals.empty()) {
+        price += Animals[0]->sell();
+        cout << "You sold " << Animals[0]->getName() << endl;
+        Animals.erase(Animals.begin());
+    }
+    return price;
 }
 
 void Habitat::steal() {
