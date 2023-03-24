@@ -10,8 +10,8 @@ void AmazonZoo::openBoutique(Zoo* client){
     do {
         cout << "\n**** AMAZON ZOO ****                                       Balance: " << client->getMoney() << "euro" << endl;
         cout << "(1) Food" << endl;
-        cout << "(2) habitats" << endl;
-        cout << "(3) Animals" << endl;
+        cout << "(2) Buy habitats" << endl;
+        cout << "(3) Buy animals" << endl;
         cout << "(0) Main Menu" << endl;
         cin >> userInput; Input = (int)userInput[0] - 48;
         switch (Input)
@@ -253,7 +253,3 @@ void AmazonZoo::placeAnimal(Zoo *client, int article) {
         sell(client, article);
     }
 }
-
-
-
-

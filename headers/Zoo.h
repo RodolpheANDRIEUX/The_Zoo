@@ -43,6 +43,8 @@ public:
 
     double getGrains() const;
 
+    int nbHabitat();
+
     void give(int article, double quantity);
 
     bool checkPlaceForTiger();
@@ -56,6 +58,14 @@ public:
     void show();
 
     void gameOver() const;
+
+    // Sell
+    void sellMenu();
+
+    void sellHabitatMenu();
+
+    void sellAnimalMenu();
+
 
     // Pass time
     void skipMenu();

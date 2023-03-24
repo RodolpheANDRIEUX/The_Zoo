@@ -31,6 +31,7 @@ int main() {
         cout << "(1) Buy" << endl;
         cout << "(2) See the Zoo" << endl;
         cout << "(3) Pass time" << endl;
+        cout << "(4) Sell" << endl;
         cout << "(0) Exit" << endl;
         cin >> userInput; Input = (int)userInput[0] - 48;
         switch (Input)
@@ -44,6 +45,9 @@ int main() {
             case 3:
                 cout << "\n**** PASS TIME ****" << endl;
                 zoo.skipMenu();
+                break;
+            case 4:
+                zoo.sellMenu();
                 break;
             case 0:
                 break;

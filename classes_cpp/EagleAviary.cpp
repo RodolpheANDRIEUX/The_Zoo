@@ -60,3 +60,12 @@ void EagleAviary::dailyRoutine(int date) {
         }
     }
 }
+
+int EagleAviary::sell() {
+    delete this;
+    return 500;
+}
+
+string EagleAviary::getType() {
+    return "EagleAviary";
+}

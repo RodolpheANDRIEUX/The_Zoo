@@ -50,7 +50,7 @@ bool Chicken::birthDay(int date) {
             pregnancy = 0;
             return true;
         }
-        if (sick || hungry){ // its ok if its the last day... cmon!
+        if (sickCoolDown > 0 || hungry){ // its ok if its the last day... cmon!
             pregnancy = 0;
             cout << name << "'s eggs are not covered anymore..." << endl;
         }

@@ -2,6 +2,7 @@
 #include "Habitat.h"
 #include "Chicken.h"
 #include <vector>
+#include <string>
 using namespace std;
 #ifndef UNTITLED1_CHICKENCOOP_H
 #define UNTITLED1_CHICKENCOOP_H
@@ -20,6 +21,10 @@ public:
     void checkOverCrowding() override;
 
     void dailyRoutine(int date) override;
+
+    int sell() override;
+
+    string getType() override;
 };
 
 

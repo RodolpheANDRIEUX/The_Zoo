@@ -72,3 +72,12 @@ void TigerEnclosure::dailyRoutine(int date) {
 
     }
 }
+
+int TigerEnclosure::sell() {
+    delete this;
+    return 500;
+}
+
+string TigerEnclosure::getType() {
+    return "TigerEnclosure";
+}
