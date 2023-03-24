@@ -23,6 +23,8 @@ public:
     double eatMeat(double meat);
 
     double eatGrains(double grains);
+
+    int sell() override;
 };
 
 

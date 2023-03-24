@@ -93,3 +93,16 @@ double Tiger::eatMeat(double meat) {
 double Tiger::eatGrains(double grains) {
     return 0;
 }
+
+int Tiger::sell() {
+    if(age <= 180) {
+        return 1500;
+    }
+    if(age <= 1440) {
+        return 60000;
+    }
+    if(age <= 5040) {
+        return 10000;
+    }
+    return 0;
+}

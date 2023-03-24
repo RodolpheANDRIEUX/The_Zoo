@@ -91,3 +91,14 @@ double Chicken::eatGrains(double grains) {
 double Chicken::eatMeat(double meat) {
     return 0;
 }
+
+int Chicken::sell() {
+    if(age <= 180) {
+        if(female) {
+            return 10;
+        } else {
+            return 20;
+        }
+    }
+    return 0;
+}

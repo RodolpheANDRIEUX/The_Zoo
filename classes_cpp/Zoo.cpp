@@ -295,6 +295,8 @@ void Zoo::sellHabitatMenu() {
             cout << "You earn " << price << " euro by selling an enclosure." << endl;
             money += price;
             break;
+        } else if(Input == 0) {
+            break;
         } else {
             cout << "*unknown input*" << endl;
         }
@@ -302,7 +304,29 @@ void Zoo::sellHabitatMenu() {
 }
 
 void Zoo::sellAnimalMenu() {
+    string userInput;
+    int Input;
 
+    do {
+        int i = 1;
+        for(auto habitat : habitats) {
+            cout << "(" << i << ") " << habitat->getType() << endl;
+            i++;
+        }
+        cout << "(0) back to menu" << endl;
+        cin >> userInput;
+        Input = (int) userInput[0] - 48;
+
+        if(Input <= habitats.size() && Input != 0) {
+            int price = habitats[Input-1]->sellAnimal();
+            if(price > 0) {
+                money += price;
+            }
+            break;
+        } else {
+            cout << "*unknown input*" << endl;
+        }
+    } while (Input != 0);
 }
 
 

@@ -32,6 +32,8 @@ public:
 
     virtual string getType() = 0;
 
+    int sellAnimal();
+
     void steal();
 
     double meatConsumption(double meat);
