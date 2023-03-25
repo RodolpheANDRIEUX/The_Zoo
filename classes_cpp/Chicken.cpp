@@ -93,12 +93,8 @@ double Chicken::eatMeat(double meat) {
 }
 
 int Chicken::sell() {
-    if(age <= 180) {
-        if(female) {
-            return 10;
-        } else {
-            return 20;
-        }
+    if(female) {
+        return 10;
     }
-    return 0;
+    return 20;
 }

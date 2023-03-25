@@ -78,5 +78,5 @@ int TigerEnclosure::sell() {
 }
 
 string TigerEnclosure::getType() {
-    return "TigerEnclosure";
+    return "Tiger Enclosure";
 }

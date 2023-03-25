@@ -33,44 +33,44 @@ void Habitat::checkReproductions() {
 
 int Habitat::sellOneAnimal() {
     string userInput;
-    int Input;
+    int input;
 
-    do {
+    while (true) {
         int i = 1;
-        for(auto animal : Animals) {
-            cout << "(" << i << ") " << animal->getName() << endl;
-            i++;
+        for (const auto& animal : Animals) {
+            cout << "(" << i << ") " << animal->getName() << " +" << animal->sell() << "euros" << endl;
+            ++i;
         }
         cout << "(0) back to menu" << endl;
         cin >> userInput;
-        Input = (int) userInput[0] - 48;
 
-        if(Input <= Animals.size() && Input != 0) {
-            int price = Animals[Input-1]->sell();
-            if(price > 0) {
-                cout << "You earn " << price << " euro by selling " << Animals[Input-1]->getName() << endl;
-                Animals.erase(Animals.begin() + Input-1);
-                return price;
-            } else {
-                cout << "You cannot sell." << endl;
-                return -1;
-            }
-        } else if(Input == 0) {
-            break;
+        try {
+            input = stoi(userInput);
+        } catch (...) {
+            cout << "*unknown input*" << endl;
+            continue;
+        }
+
+        if (input > 0 && input <= Animals.size()) {
+            int price = Animals[input - 1]->sell();
+            cout << "You earn " << price << " euro by selling " << Animals[input - 1]->getName() << endl;
+            Animals.erase(Animals.begin() + input - 1);
+            return price;
+        } else if (input == 0) {
+            return 0;
         } else {
             cout << "*unknown input*" << endl;
         }
-    } while (Input != 0);
-    return -2;
+    }
 }
 
 int Habitat::sellAllAnimal() {
     int price = 0;
-    while(!Animals.empty()) {
-        price += Animals[0]->sell();
-        cout << "You sold " << Animals[0]->getName() << endl;
-        Animals.erase(Animals.begin());
+    for (const auto& animal : Animals) {
+        price += animal->sell();
+        cout << "You sold " << animal->getName() << endl;
     }
+    Animals.clear();
     return price;
 }
 

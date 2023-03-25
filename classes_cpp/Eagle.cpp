@@ -109,8 +109,5 @@ int Eagle::sell() {
     if(age <= 1440) {
         return 2000;
     }
-    if(age <= 5040) {
-        return 400;
-    }
-    return 0;
+    return 400;
 }

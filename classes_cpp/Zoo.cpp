@@ -277,7 +277,7 @@ void Zoo::sellMenu() {
 
 void Zoo::sellHabitatMenu() {
     string userInput;
-    int Input;
+    int input;
 
     do {
         int i = 1;
@@ -287,36 +287,44 @@ void Zoo::sellHabitatMenu() {
         }
         cout << "(0) back to menu" << endl;
         cin >> userInput;
-        Input = (int) userInput[0] - 48;
 
-        if(Input <= habitats.size() && Input != 0) {
-            if(!habitats.empty()) {
+        try {
+            input = stoi(userInput);
+        } catch (...) {
+            cout << "*unknown input*" << endl;
+            continue;
+        }
+
+        if(input <= habitats.size() && input != 0) {
+            auto habitat = habitats[input-1];
+            if(habitat->getNbAnimals() != 0) {
                 cout << "Some animals are in the enclosure that you are trying to sell" << endl;
-                cout << "Do you want to sell animals with the enclosure ? (y/n)" << endl;
+                cout << "Do you want to sell all the animals with the enclosure ? (1/0)" << endl;
                 cin >> userInput;
-                do {
-                    if(userInput == "y") {
-                        int price = habitats[Input-1]->sellAllAnimal();
-                        cout << "You earn " << price << " euro by selling alls animals." << endl;
-                        money += price;
-                        break;
-                    } else if(userInput == "n") {
-                        return;
-                    } else {
-                        cout << "*unknown input*" << endl;
-                    }
-                } while(userInput != "y" || userInput != "n");
+
+                while (userInput != "1" && userInput != "0") {
+                    cout << "*unknown input*" << endl;
+                    cin >> userInput;
+                }
+
+                if(userInput == "1") {
+                    int price = habitat->sellAllAnimal();
+                    cout << "You earn " << price << " euro by selling all animals." << endl;
+                    money += price;
+                } else {
+                    return;
+                }
             }
-            int price = habitats[Input-1]->sell();
-            cout << "You earn " << price << " euro by selling " << habitats[Input-1]->getType() << endl;
-            habitats.erase(habitats.begin() + Input-1);
+            int price = habitat->sell();
+            cout << "You earn " << price << " euro by selling " << habitat->getType() << endl;
+            habitats.erase(habitats.begin() + input-1);
             money += price;
-        } else if(Input == 0) {
+        } else if(input == 0) {
             break;
         } else {
             cout << "*unknown input*" << endl;
         }
-    } while (Input != 0);
+    } while (input != 0);
 }
 
 void Zoo::sellAnimalMenu() {
@@ -324,29 +332,27 @@ void Zoo::sellAnimalMenu() {
     int Input;
 
     do {
+        cout << "** selling Animal **" <<
         int i = 1;
         for(auto habitat : habitats) {
-            cout << "(" << i << ") " << habitat->getType() << endl;
+            int nbA = habitat->getNbAnimals();
+            if (nbA > 0){
+                cout << "(" << i << ") " << habitat->getType() << " with " << to_string(nbA) << " animal" << ((nbA == 1) ? "" : "s") << endl;
+            }
             i++;
         }
         cout << "(0) back to menu" << endl;
         cin >> userInput;
         Input = (int) userInput[0] - 48;
 
-        if(Input <= habitats.size() && Input != 0) {
+        if(Input <= habitats.size() && Input > 0) {
             int price = habitats[Input-1]->sellOneAnimal();
-            if(price > 0) {
-                money += price;
-            }
-            break;
-        } else if(Input == 0) {
-            break;
-        } else {
+            money += price;
+        } else if (Input != 0){
             cout << "*unknown input*" << endl;
         }
     } while (Input != 0);
 }
-
 
 // Next Day
 void Zoo::skipMenu() {

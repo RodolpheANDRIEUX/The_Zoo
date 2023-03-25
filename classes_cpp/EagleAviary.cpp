@@ -66,5 +66,5 @@ int EagleAviary::sell() {
 }
 
 string EagleAviary::getType() {
-    return "EagleAviary";
+    return "Eagle Aviary";
 }

@@ -77,5 +77,5 @@ int ChickenCoop::sell() {
 }
 
 string ChickenCoop::getType() {
-    return "ChickenCoop";
+    return "Chicken Coop";
 }
