@@ -46,6 +46,8 @@ public:
     virtual double eatMeat(double meat) = 0;
 
     virtual double eatGrains(double grains) = 0;
+
+    virtual int sell() = 0;
 };
 
 

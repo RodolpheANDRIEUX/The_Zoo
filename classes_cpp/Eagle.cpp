@@ -101,3 +101,16 @@ double Eagle::eatMeat(double meat) {
 double Eagle::eatGrains(double grains) {
     return 0;
 }
+
+int Eagle::sell() {
+    if(age <= 180) {
+        return 500;
+    }
+    if(age <= 1440) {
+        return 2000;
+    }
+    if(age <= 5040) {
+        return 400;
+    }
+    return 0;
+}

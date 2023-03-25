@@ -21,6 +21,10 @@ public:
     void checkOverCrowding() override;
 
     void dailyRoutine(int date) override;
+
+    int sell() override;
+
+    string getType() override;
 };
 
 

@@ -71,3 +71,11 @@ void ChickenCoop::dailyRoutine(int date) {
         }
     }
 }
+
+int ChickenCoop::sell() {
+    return 50;
+}
+
+string ChickenCoop::getType() {
+    return "ChickenCoop";
+}

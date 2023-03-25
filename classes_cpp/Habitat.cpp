@@ -31,6 +31,49 @@ void Habitat::checkReproductions() {
     }
 }
 
+int Habitat::sellOneAnimal() {
+    string userInput;
+    int Input;
+
+    do {
+        int i = 1;
+        for(auto animal : Animals) {
+            cout << "(" << i << ") " << animal->getName() << endl;
+            i++;
+        }
+        cout << "(0) back to menu" << endl;
+        cin >> userInput;
+        Input = (int) userInput[0] - 48;
+
+        if(Input <= Animals.size() && Input != 0) {
+            int price = Animals[Input-1]->sell();
+            if(price > 0) {
+                cout << "You earn " << price << " euro by selling " << Animals[Input-1]->getName() << endl;
+                Animals.erase(Animals.begin() + Input-1);
+                return price;
+            } else {
+                cout << "You cannot sell." << endl;
+                return -1;
+            }
+        } else if(Input == 0) {
+            break;
+        } else {
+            cout << "*unknown input*" << endl;
+        }
+    } while (Input != 0);
+    return -2;
+}
+
+int Habitat::sellAllAnimal() {
+    int price = 0;
+    while(!Animals.empty()) {
+        price += Animals[0]->sell();
+        cout << "You sold " << Animals[0]->getName() << endl;
+        Animals.erase(Animals.begin());
+    }
+    return price;
+}
+
 void Habitat::steal() {
     if(getNbAnimals() == 0) {
         cout << "Some thieves broke into the zoo but found no animals." << endl;

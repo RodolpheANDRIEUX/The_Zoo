@@ -28,6 +28,14 @@ public:
 
     virtual void dailyRoutine(int date) = 0;
 
+    virtual int sell() = 0;
+
+    virtual string getType() = 0;
+
+    int sellOneAnimal();
+
+    int sellAllAnimal();
+
     void steal();
 
     double meatConsumption(double meat);

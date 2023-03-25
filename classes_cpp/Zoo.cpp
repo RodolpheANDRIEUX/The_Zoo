@@ -25,6 +25,10 @@ double Zoo::getSteaks() const {
     return steaks;
 }
 
+int Zoo::nbHabitat() {
+    return habitats.size();
+}
+
 // create all new elements (Food, Habitats, Animals) when bought in the store
 void Zoo::give(int article, double quantity) {
     if (article < 100){ // food
@@ -244,6 +248,105 @@ void Zoo::show() {
     } while (Input != 0);
 }
 
+// Sell
+void Zoo::sellMenu() {
+    string userInput;
+    int Input;
+
+    do {
+        cout << "(1) Habitats" << endl;
+        cout << "(2) Animals" << endl;
+        cout << "(0) back to menu" << endl;
+        cin >> userInput;
+        Input = (int) userInput[0] - 48;
+        switch (Input) {
+            case 1:
+                sellHabitatMenu();
+                break;
+            case 2:
+                sellAnimalMenu();
+                break;
+            case 0:
+                break;
+            default:
+                cout << "*unknown input*" << endl;
+                break;
+        }
+    } while (Input != 0);
+}
+
+void Zoo::sellHabitatMenu() {
+    string userInput;
+    int Input;
+
+    do {
+        int i = 1;
+        for(auto habitat : habitats) {
+            cout << "(" << i << ") " << habitat->getType() << endl;
+            i++;
+        }
+        cout << "(0) back to menu" << endl;
+        cin >> userInput;
+        Input = (int) userInput[0] - 48;
+
+        if(Input <= habitats.size() && Input != 0) {
+            if(!habitats.empty()) {
+                cout << "Some animals are in the enclosure that you are trying to sell" << endl;
+                cout << "Do you want to sell animals with the enclosure ? (y/n)" << endl;
+                cin >> userInput;
+                do {
+                    if(userInput == "y") {
+                        int price = habitats[Input-1]->sellAllAnimal();
+                        cout << "You earn " << price << " euro by selling alls animals." << endl;
+                        money += price;
+                        break;
+                    } else if(userInput == "n") {
+                        return;
+                    } else {
+                        cout << "*unknown input*" << endl;
+                    }
+                } while(userInput != "y" || userInput != "n");
+            }
+            int price = habitats[Input-1]->sell();
+            cout << "You earn " << price << " euro by selling " << habitats[Input-1]->getType() << endl;
+            habitats.erase(habitats.begin() + Input-1);
+            money += price;
+        } else if(Input == 0) {
+            break;
+        } else {
+            cout << "*unknown input*" << endl;
+        }
+    } while (Input != 0);
+}
+
+void Zoo::sellAnimalMenu() {
+    string userInput;
+    int Input;
+
+    do {
+        int i = 1;
+        for(auto habitat : habitats) {
+            cout << "(" << i << ") " << habitat->getType() << endl;
+            i++;
+        }
+        cout << "(0) back to menu" << endl;
+        cin >> userInput;
+        Input = (int) userInput[0] - 48;
+
+        if(Input <= habitats.size() && Input != 0) {
+            int price = habitats[Input-1]->sellOneAnimal();
+            if(price > 0) {
+                money += price;
+            }
+            break;
+        } else if(Input == 0) {
+            break;
+        } else {
+            cout << "*unknown input*" << endl;
+        }
+    } while (Input != 0);
+}
+
 
 // Next Day
 void Zoo::skipMenu() {
@@ -328,12 +431,10 @@ void Zoo::nextDay() {
 }
 
 void Zoo::eventFire() {
-    if(!habitats.empty()) {
-        if(!habitats.empty() && Utils::tirage(1)) {
-            int random = Utils::randomInt(int(habitats.size())-1);
-            cout << "An enclosure burned during the night" << ((habitats[random]->getNbAnimals() > 0) ? ", everyone is dead" : "") << endl;
-            habitats.erase(habitats.begin() + random);
-        }
+    if(!habitats.empty() && Utils::tirage(1)) {
+        int random = Utils::randomInt(int(habitats.size())-1);
+        cout << "An enclosure burned during the night" << ((habitats[random]->getNbAnimals() > 0) ? ", everyone is dead" : "") << endl;
+        habitats.erase(habitats.begin() + random);
     }
 }
 
