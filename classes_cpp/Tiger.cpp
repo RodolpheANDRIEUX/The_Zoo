@@ -103,3 +103,18 @@ int Tiger::sell() {
     }
     return 10000;
 }
+
+double Tiger::getDailyIncomes(int days) {
+    double inc = 0;
+    if (days == 1){
+        inc += 43800;
+    }
+    if(pregnancy == 0){
+        if (days%360 > 120 && days%360 < 240){ // haute saison
+            inc += 60;
+        } else{
+            inc += 10;
+        }
+    }
+    return inc;
+}

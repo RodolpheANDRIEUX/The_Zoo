@@ -111,3 +111,18 @@ int Eagle::sell() {
     }
     return 400;
 }
+
+double Eagle::getDailyIncomes(int days) {
+    double inc = 0;
+    if (days == 1){
+        inc += 2190;
+    }
+    if (pregnancy < 1){
+        if (days%360 > 120 && days%360 < 240){ // haute saison
+            inc += 30;
+        } else{
+            inc += 14;
+        }
+    }
+    return inc;
+}

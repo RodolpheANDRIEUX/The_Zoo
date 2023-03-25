@@ -41,6 +41,8 @@ public:
     double meatConsumption(double meat);
 
     double grainsConsumption(double grains);
+
+    double countIncomes(int days);
 };
 
 

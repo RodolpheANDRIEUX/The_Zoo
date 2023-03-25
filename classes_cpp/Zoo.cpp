@@ -281,6 +281,7 @@ void Zoo::sellHabitatMenu() {
 
     do {
         int i = 1;
+        cout << "** selling Habitat **                        money: " << money << "euros" << endl;
         for(auto habitat : habitats) {
             cout << "(" << i << ") " << habitat->getType() << endl;
             i++;
@@ -332,7 +333,7 @@ void Zoo::sellAnimalMenu() {
     int Input;
 
     do {
-        cout << "** selling Animal **" <<
+        cout << "** selling Animal **                        money: " << money << "euros" << endl;
         int i = 1;
         for(auto habitat : habitats) {
             int nbA = habitat->getNbAnimals();
@@ -422,7 +423,7 @@ void Zoo::nextDay() {
         habitat->checkOverCrowding();
         habitat->checkReproductions();
         habitat->dailyRoutine(Days); // sickness, birth and old
-//        money += habitat->countIncomes(Days);
+        money += habitat->countIncomes(Days);
         steaks = habitat->meatConsumption(steaks);
         grains = habitat->grainsConsumption(grains);
     }

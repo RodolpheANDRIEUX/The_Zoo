@@ -110,3 +110,12 @@ double Habitat::grainsConsumption(double grains) {
     }
     return grains;
 }
+
+double Habitat::countIncomes(int days) {
+    double incomes = 0;
+    for (int i = 0; i < getNbAnimals(); i++) {
+        incomes += Animals[i]->getDailyIncomes(days);
+    }
+    return incomes;
+}
+

@@ -25,6 +25,8 @@ public:
     double eatGrains(double grains);
 
     int sell() override;
+
+    double getDailyIncomes(int days) override;
 };
 
 

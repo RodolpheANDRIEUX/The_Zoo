@@ -98,3 +98,15 @@ int Chicken::sell() {
     }
     return 20;
 }
+
+double Chicken::getDailyIncomes(int days) {
+    double inc = 0;
+    if (pregnancy < 1){
+        if (days%360 > 120 && days%360 < 240){ // haute saison
+            inc += 4;
+        } else{
+            inc += 1;
+        }
+    }
+    return inc;
+}

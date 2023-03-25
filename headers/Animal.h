@@ -47,6 +47,8 @@ public:
 
     virtual double eatGrains(double grains) = 0;
 
+    virtual double getDailyIncomes(int days) = 0;
+
     virtual int sell() = 0;
 };
 
