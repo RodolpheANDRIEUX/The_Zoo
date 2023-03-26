@@ -111,7 +111,7 @@ int Tiger::sell() {
 
 double Tiger::getDailyIncomes(int days) {
     double inc = 0;
-    if (days == 1){
+    if (days%360 == 1){
         inc += 43800;
     }
     if(pregnancy == 0){

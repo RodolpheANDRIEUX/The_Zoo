@@ -120,7 +120,7 @@ int Eagle::sell() {
 
 double Eagle::getDailyIncomes(int days) {
     double inc = 0;
-    if (days == 1){
+    if (days%360 == 1){
         inc += 2190;
     }
     if (pregnancy < 1){
