@@ -33,7 +33,7 @@ public:
 
     virtual bool getOlder() = 0;
 
-    virtual void handleSickness() = 0;
+    virtual bool handleSickness() = 0;
 
     virtual void getPregnant(Animal* mate) = 0;
 

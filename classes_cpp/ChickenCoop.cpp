@@ -43,7 +43,12 @@ void ChickenCoop::dailyRoutine(int date) {
         Animal* chicken = Animals[i];
 
         //sick
-        chicken->handleSickness();
+        if (chicken->handleSickness()){
+            Animals.erase(Animals.begin() + i);
+            i--; // update iterator
+            nbAnimal--;
+            continue;
+        }
 
         // eggs
         if (chicken->getFemale() && chicken->isSexuallyPredisposed()){

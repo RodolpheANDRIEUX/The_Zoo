@@ -8,13 +8,19 @@ void Eagle::show() {
     cout << ((sickCoolDown > 0)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sickCoolDown > 0 || hungry)? "     /!\\" : "") << endl;
 }
 
-void Eagle::handleSickness() {
-    if(sickCoolDown > 0 && Utils::tirage(2400)){
+bool Eagle::handleSickness() {
+    if(sickCoolDown > 0 && Utils::tirage(2400)){ // -20% / +infinity esperance: 30j
         sickCoolDown--;
+        if (Utils::tirage(10)) { // en moyenne 10% de mortalité sur la durée esperée de la maladie
+            kill(7);
+            return true;
+        }
+        return false;
     }
     if(Utils::tirage(833) && Utils::tirage(3)) {
-        sickCoolDown = 24;
+        sickCoolDown = 24; // durée esperée -20%
     }
+    return false;
 }
 
 bool Eagle::getOlder() {
@@ -119,9 +125,11 @@ double Eagle::getDailyIncomes(int days) {
     }
     if (pregnancy < 1){
         if (days%360 > 120 && days%360 < 240){ // haute saison
-            inc += 30;
+            inc += 24;
+            inc += Utils::randomInt(12); // 30 par jour en moyenne (+/-20%)
         } else{
-            inc += 14;
+            inc += 11;
+            inc += Utils::randomInt(6); // 14 par jour en moyenne (+/-21.4%)
         }
     }
     return inc;

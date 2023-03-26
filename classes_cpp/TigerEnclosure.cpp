@@ -49,7 +49,12 @@ void TigerEnclosure::dailyRoutine(int date) {
         Animal *tiger = Animals[i];
 
         //sick
-        tiger->handleSickness();
+        if (tiger->handleSickness()){
+            Animals.erase(Animals.begin() + i);
+            i--; // update iterator
+            nbAnimal--;
+            continue;
+        }
 
         // birth
         if (tiger->birthDay(date)) {
@@ -68,8 +73,6 @@ void TigerEnclosure::dailyRoutine(int date) {
             i--; // update iterator
             nbAnimal--;
         }
-
-
     }
 }
 

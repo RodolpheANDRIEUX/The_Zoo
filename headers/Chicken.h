@@ -11,7 +11,8 @@ public:
 
     void show() override;
 
-    void handleSickness() override;
+    bool handleSickness() override;
+
     bool getOlder() override;
 
     bool isSexuallyPredisposed() override;

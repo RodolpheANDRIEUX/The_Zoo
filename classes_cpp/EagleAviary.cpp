@@ -40,7 +40,12 @@ void EagleAviary::dailyRoutine(int date) {
         Animal* eagle = Animals[i];
 
         //sick
-        eagle->handleSickness();
+        if (eagle->handleSickness()){
+            Animals.erase(Animals.begin() + i);
+            i--; // update iterator
+            nbAnimal--;
+            continue;
+        }
 
         // birth
         if (eagle->birthDay(date)){

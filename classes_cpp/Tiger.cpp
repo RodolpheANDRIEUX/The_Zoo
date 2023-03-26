@@ -8,14 +8,19 @@ void Tiger::show() {
     cout << ((sickCoolDown > 0)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sickCoolDown > 0 || hungry)? "     /!\\" : "") << endl;
 }
 
-void Tiger::handleSickness() {
-    if(sickCoolDown > 0 && Utils::tirage(2400)){
+bool Tiger::handleSickness() {
+    if(sickCoolDown > 0 && Utils::tirage(2400)){ // -20% / +infinity esperance: 15j
         sickCoolDown--;
-        return;
+        if (Utils::tirage(20)) { // en moyenne 10% de mortalité sur la durée esperée de la maladie
+            kill(7);
+            return true;
+        }
+        return false;
     }
     if(Utils::tirage(25) && Utils::tirage(300)) {
-        sickCoolDown = 12;
+        sickCoolDown = 12; // durée esperée -20%
     }
+    return false;
 }
 
 bool Tiger::getOlder() {
@@ -111,9 +116,11 @@ double Tiger::getDailyIncomes(int days) {
     }
     if(pregnancy == 0){
         if (days%360 > 120 && days%360 < 240){ // haute saison
-            inc += 60;
-        } else{
-            inc += 10;
+            inc += 48;
+            inc += Utils::randomInt(24); // 60 par jour en moyenne (+/-20%)
+        } else{ // saison basse
+            inc += 8;
+            inc += Utils::randomInt(4); // 10 par jour en moyenne (+/-20%)
         }
     }
     return inc;

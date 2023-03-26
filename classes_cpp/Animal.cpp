@@ -29,6 +29,9 @@ void Animal::kill(int deathCode) {
         case 6:
             cout << "The thieves have stolen " << name << endl;
             break;
+        case 7:
+            cout << "*" << name << " died from sickness*" << endl;
+            break;
         default:
             cout << "*" << name << " died*" << endl;
             break;

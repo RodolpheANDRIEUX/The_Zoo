@@ -7,13 +7,19 @@ void Chicken::show() {
     cout << ((sickCoolDown > 0)? "" : "not ") << "sick and " << ((hungry)? "" : "not ") << "hungry" << ((sickCoolDown > 0 || hungry)? "     /!\\" : "") << endl;
 }
 
-void Chicken::handleSickness() {
-    if(sickCoolDown > 0 && Utils::tirage(2400)){
+bool Chicken::handleSickness() {
+    if(sickCoolDown > 0 && Utils::tirage(2400)){ // -20% / +infinity esperance: 5j
         sickCoolDown--;
+        if (Utils::tirage(60)) { // en moyenne 10% de mortalité sur la durée esperée de la maladie
+            kill(7);
+            return true;
+        }
+        return false;
     }
     if(Utils::tirage(10) && Utils::tirage(125)) {
-        sickCoolDown = 4;
+        sickCoolDown = 4; // durée esperée -20%
     }
+    return false;
 }
 
 bool Chicken::getOlder() {
@@ -103,9 +109,11 @@ double Chicken::getDailyIncomes(int days) {
     double inc = 0;
     if (pregnancy < 1){
         if (days%360 > 120 && days%360 < 240){ // haute saison
-            inc += 4;
+            inc += 3.2;
+            inc += Utils::randomInt(2); // 4 par jour en moyenne (+/-30%)
         } else{
-            inc += 1;
+            inc += 0.5;
+            inc += Utils::randomInt(1); // 1 par jour en moyenne (+/-50%)
         }
     }
     return inc;
