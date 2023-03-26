@@ -1,4 +1,4 @@
-# 🐯 The Zoo (🇬🇧)
+# 🐯 The Zoo (english)
 
 ![Zoo Entrance](https://cdn-icons-png.flaticon.com/512/2093/2093797.png)
 
@@ -51,7 +51,7 @@ The goal of the game is to expand your zoo by taking advantage of breeding, buyi
 - [LASSERRE Anaël]()
 
 ---
-# 🐯 Le Zoo (🇫🇷)
+# 🐯 Le Zoo (Français)
 
 ![Zoo Entrance](https://cdn-icons-png.flaticon.com/512/2093/2093797.png)
 
