@@ -1,6 +1,6 @@
 # 🐯 The Zoo (🇬🇧)
 
-![Zoo Entrance](https://your-image-url-here.com/zoo-entrance.jpg)
+![Zoo Entrance](https://cdn-icons-png.flaticon.com/512/2093/2093797.png)
 
 Welcome to __*The Zoo*__! In this game, everything takes place in the terminal. Your goal is to develop and manage your own zoo by taking care of animals, managing habitats, and attracting visitors.
 
@@ -53,7 +53,7 @@ The goal of the game is to expand your zoo by taking advantage of breeding, buyi
 ---
 # 🐯 Le Zoo (🇫🇷)
 
-![Zoo Entrance](https://your-image-url-here.com/zoo-entrance.jpg)
+![Zoo Entrance](https://cdn-icons-png.flaticon.com/512/2093/2093797.png)
 
 Bienvenue dans __*Le Zoo*__! Dans ce jeu, tout se passe dans le terminal. Votre objectif est de développer et gérer votre propre zoo en prenant soin des animaux, en gérant les habitats et en attirant des visiteurs.
 
