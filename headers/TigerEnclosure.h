@@ -8,7 +8,7 @@
 class TigerEnclosure : public Habitat{
 
 public:
-    void show() override;
+    Animal* show() override;
 
     int getPlace() override;
 

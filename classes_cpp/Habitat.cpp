@@ -119,3 +119,35 @@ double Habitat::countIncomes(int days) {
     return incomes;
 }
 
+Animal* Habitat::habitatMenu() {
+    int Input;
+    do {
+        int index = 1;
+        for (auto & Animal : Animals){
+            cout << "(" << index << ") ";
+            Animal->show();
+            index++;
+        }
+        cout << "(0) Go back" << endl;
+
+        string strInput;
+        cin >> strInput;
+        try {
+            Input = stoi(strInput);
+        } catch (...) {
+            cout << "*unknown input*" << endl;
+            Input = -1;
+            continue;
+        }
+
+        if (Input > 0 && Input <= Animals.size()){
+            auto animal = Animals[Input-1];
+            if(animal->menu() == 1){ // 1 is "move"
+                Animals.erase(Animals.begin() + Input-1);
+                return animal; // we return pointer to the animal to move
+            }
+        }
+    } while (Input != 0);
+    return nullptr;
+}
+

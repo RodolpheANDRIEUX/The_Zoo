@@ -1,15 +1,13 @@
 #include "../headers/EagleAviary.h"
 #include "../headers/Utils.h"
 
-void EagleAviary::show() {
-    cout << "** EAGLE AVIARY **" << endl;
+Animal* EagleAviary::show() {
+    cout << "\n** EAGLE AVIARY **" << endl;
     if (Animals.empty()){
         cout << "4 available places" << endl;
-        return;
+        return nullptr;
     }
-    for (auto & Animal : Animals){
-        Animal->show();
-    }
+    return habitatMenu();
 }
 
 int EagleAviary::getPlace() {

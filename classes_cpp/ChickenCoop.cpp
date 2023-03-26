@@ -2,17 +2,14 @@
 #include "../headers/Eagle.h"
 #include "../headers/Tiger.h"
 #include "../headers/Chicken.h"
-#include "../headers/Utils.h"
 
-void ChickenCoop::show() {
-    cout << "** CHICKEN COOP **" << ((overCrowded) ? "yes" : "no") << endl;
+Animal* ChickenCoop::show() {
+    cout << "\n** CHICKEN COOP **" << endl;
     if (Animals.empty()){
         cout << "10 available places" << endl;
-        return;
+        return nullptr;
     }
-    for (auto & Animal : Animals){
-        Animal->show();
-    }
+    return habitatMenu();
 }
 
 int ChickenCoop::getPlace() {

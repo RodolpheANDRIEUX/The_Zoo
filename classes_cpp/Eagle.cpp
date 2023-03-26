@@ -134,3 +134,7 @@ double Eagle::getDailyIncomes(int days) {
     }
     return inc;
 }
+
+void Eagle::interact() {
+    cout << "there not much to do with an eagle" << endl;
+}

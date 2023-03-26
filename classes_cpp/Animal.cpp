@@ -49,3 +49,51 @@ bool Animal::everythingok() const {
 void Animal::getsShy(int i) {
     shyCoolDown = i;
 }
+
+int Animal::menu() {
+    int Input;
+    do {
+        cout << "\n** " << name << " **" << endl;
+        cout << "(1) Rename" << endl;
+        cout << "(2) Move" << endl;
+        cout << "(3) Interact" << endl;
+        cout << "(0) Go back" << endl;
+
+        string strInput;
+        cin >> strInput;
+        try {
+            Input = stoi(strInput);
+        } catch (...) {
+            cout << "*unknown input*" << endl;
+            Input = -1;
+            continue;
+        }
+
+        switch (Input) {
+            case 1:
+                rename();
+                break;
+            case 2:
+                return 1;
+            case 3:
+                interact();
+                break;
+            case 0:
+                break;
+            default:
+                cout << "*unknown input*" << endl;
+                break;
+        }
+
+    } while (Input != 0);
+    return 0;
+}
+
+void Animal::rename() {
+    string newName;
+    cout << "Enter new name: ";
+    cin >> newName;
+    name = newName;
+    cout << "Name changed to " << name << "." << endl;
+}
+
