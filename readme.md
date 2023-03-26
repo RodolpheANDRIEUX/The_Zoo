@@ -40,6 +40,7 @@ The goal of the game is to expand your zoo by taking advantage of breeding, buyi
 
 - Time is not a scenario over 10 years; the player can play themselves over 10 years and more if they wish.
 - The player can buy any item (food, animals, habitat) with a single method.
+- The player can rename, move and interact with the animals (pet the tigers, talk with the chickens,...)
 - All inputs have error handling;
 - It is nearly impossible to put an animal in the wrong type of habitat. Indeed, putting a chicken in a tiger habitat is possible, but it will be eaten. This will give the tiger the weight of the chicken in meat. If there are no tigers, the lucky chicken will escape the zoo. You will then receive a fine for endangering visitor safety.
 - In the list of habitats, if an animal is hungry or sick, an icon (/!\\) will be displayed next to the concerned line
@@ -87,16 +88,17 @@ Le but du jeu est de développer votre zoo en profitant des reproductions, en ac
 [Voici une copie de l'excel de la consigne](https://docs.google.com/spreadsheets/d/1MjxqtMzeRHTIvxKP_Xu-opLi2-lufaPF5iwtXDAlAe8/edit?usp=sharing) dans lequel a été colorié en vert les parametres presents dans notre code.
 
 >#### Tester le jeu
->Une bonne manniere de tester obtimalement le jeu est de commencer par visiter le Zoo (2), acheter des animaux suplementaires (1), puis de passer un jour (3). Vous devriez avoir alors touché toutes les subventions annuelles pour especes protegées. Cela vous permettra d'acheter ensuite toute la nourriture necessaire pour pouvoir passer un an. Le but est alors de répéter cette operation pour esperer faire atteindre leur maturitée sexuelle aux animaux. (Pour eviter d'avoir beaucoup de notifications dues aux poules, vous pouvez tester la vente d'animaux (4) en vendant toutes les poules!).
+>Une bonne manière de tester optimalement le jeu est de commencer par visiter le Zoo (2), acheter des animaux supplémentaires (1), puis de passer un jour (3). Vous devriez avoir alors touché toutes les subventions annuelles pour espèces protegées. Cela vous permettra d'acheter ensuite toute la nourriture necessaire pour pouvoir passer un an. Le but est alors de répéter cette operation pour espérer faire atteindre leur maturité sexuelle aux animaux. (Pour éviter d'avoir beaucoup de notifications dues aux poules, vous pouvez tester la vente d'animaux (4) en vendant toutes les poules !) Pour la bienséance du test nous vous déconseillons d'aller caresser les tigres !
 
 #### Spécificités techniques
 
 - Le temps n'est pas un scenario sur 10 ans, le joueur a la possibilité de jouer lui meme sur 10 ans et plus s'il le souhaite.
 - Le joueur peut acheter n'importe quelle item (nourriture, animaux, habitat) avec une methode unique.
-- Toutes les inputs ont une gestion d'erreur;
-- Il est impossible (ou presque) des mettre un animal dans un habitat du mauvais type. En effet mettre un poulet dans un habitat de tigre est possible mais il se fera manger. Cela donnera le poids du poulet en viande au tigre. S'il n'y a pas de tigre le poulet chanceux s'échappera du zoo. Vous recevrez alors une amende pour atteinte à la securitée des visiteurs.
+- Le joueur peut renommer, déplacer et interagir avec les animaux du Zoo (caresser les tigres, discuter avec les poules,...)
+- Toutes les inputs ont une gestion d'erreur.
+- Il est impossible (ou presque) de mettre un animal dans un habitat du mauvais type. En effet, mettre un poulet dans un habitat de tigre est possible mais il se fera manger. Cela donnera le poids du poulet en viande au tigre. S'il n'y a pas de tigre le poulet chanceux s'échappera du zoo. Vous recevrez alors une amende pour atteinte à la securitée des visiteurs.
 - Dans la liste des habitats, si un animal a faim ou est malade un icon (/!\\) s'affichera à coté de la ligne concernée
-- Chaque calcul de probabilité s'effectue tout les jours grace à une methode Utils::tirage() qui tire chaque jour l'evenement en fonction de sa probabilité mensuelle passée en argument.
+- Chaque calcul de probabilité s'effectue tous les jours grâce à une methode Utils::tirage() qui tire chaque jour l'événement en fonction de sa probabilité mensuelle passée en argument.
 
 ## Créé par :
 
