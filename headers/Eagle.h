@@ -31,6 +31,8 @@ public:
     int sell() override;
 
     double getDailyIncomes(int days) override;
+
+    void interact() override;
 };
 
 

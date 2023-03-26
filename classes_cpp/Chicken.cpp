@@ -118,3 +118,34 @@ double Chicken::getDailyIncomes(int days) {
     }
     return inc;
 }
+
+void Chicken::interact() {
+    vector<string> responses = {"cot cot...", "cot?!", "cot cot cot cot cot cot cot cot.", "yes i know that", "nah C++ is easy mate", "hey do you have any bugs for me? they are so sweat!"};
+
+    int Input;
+    do {
+        cout << "\n** Interact with " << name << " **" << endl;
+        cout << "(1) 'cot'" << endl;
+        cout << "(2) 'cot cot'" << endl;
+        cout << "(3) 'cot cot cot'" << endl;
+        cout << "(0) Go back" << endl;
+
+        string strInput;
+        cin >> strInput;
+        try {
+            Input = stoi(strInput);
+        } catch (...) {
+            cout << "*unknown input*" << endl;
+            Input = -1;
+            continue;
+        }
+
+        if (Input >= 1 && Input <= 3) {
+            int randomIndex = Utils::randomInt(int(responses.size()) - 1);
+            cout << name << ": " << responses[randomIndex] << endl;
+        } else if (Input != 0) {
+            cout << "*unknown input*" << endl;
+        }
+
+    } while (Input != 0);
+}

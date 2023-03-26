@@ -12,7 +12,7 @@ protected:
     vector<Animal*> Animals;
 
 public:
-    virtual void show() = 0;
+    virtual Animal* show() = 0;
 
     virtual int getPlace() = 0;
 
@@ -43,6 +43,8 @@ public:
     double grainsConsumption(double grains);
 
     double countIncomes(int days);
+
+    Animal* habitatMenu();
 };
 
 

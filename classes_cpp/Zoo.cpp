@@ -190,7 +190,7 @@ void Zoo::placeAnimal(Animal *animal) {
                         }
                         return;
                     case 0:
-                        cout << "You have successfully welcomed a new animal in the Zoo!" << endl;
+                        cout << "You have successfully placed " << animal->getName() << endl;
                         return;
                     default:
                         cout << "*unknown error*" << endl;
@@ -243,7 +243,11 @@ void Zoo::show() {
             continue;
         }
         if (Input > 0 && Input < habitats.size()+1){
-            habitats[Input-1]->show();
+            Animal* ptrAnimal;
+            ptrAnimal = habitats[Input-1]->show();
+            if (ptrAnimal != nullptr){
+                placeAnimal(ptrAnimal);
+            }
         }
     } while (Input != 0);
 }

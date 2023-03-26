@@ -50,6 +50,12 @@ public:
     virtual double getDailyIncomes(int days) = 0;
 
     virtual int sell() = 0;
+
+    int menu();
+
+    void rename();
+
+    virtual void interact() = 0;
 };
 
 

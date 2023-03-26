@@ -12,7 +12,7 @@ class ChickenCoop : public Habitat{
     int eggs= 0;
 
 public:
-    void show() override;
+    Animal* show() override;
 
     int getPlace() override;
 
